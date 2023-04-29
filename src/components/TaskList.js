@@ -1,4 +1,4 @@
-function Task(props) {
+function TaskList(props) {
 
     function handleClick(e) {
         let taskId = parseInt(e.target.id);
@@ -13,4 +13,4 @@ function Task(props) {
     )
 }
 
-export default Task;
+export default TaskList;
