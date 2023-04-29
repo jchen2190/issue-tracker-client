@@ -1,28 +1,14 @@
 import React, { useState } from 'react';
 import { API_URL } from '../constants';
 
-function AddTask(props) {
-    const [taskNo, setTaskNo] = useState(props.lastId + 1);
+function AddTask() {
+    const [subject, setSubject] = useState("");
     const [description, setDescription] = useState("");
     const [importance, setImportance] = useState("");
 
-    async function postTask() {
-        // let newTaskNo = taskNo + 1;
-        // setUniqueId(newTaskNo);
-
-        // let newTask = {
-        //     taskNo: taskNo,
-        //     description: e.target.description.value,
-        //     importance: e.target.importance.value
-        // }
-        // props.addTask(newTask); // in Task.js
-        // e.target.description.value = "";
-
-        let newTaskNo = taskNo + 1;
-        setTaskNo(newTaskNo);
-
+    async function postTask() { 
         let newTask = {
-            taskNo: taskNo,
+            subject: subject,
             description: description,
             importance: importance
         }
@@ -40,25 +26,31 @@ function AddTask(props) {
         //     let serverResponse = await res.json()
         //     navigate(`/tasklist/${serverResponse.payload.name}`)
         // })
-        setTaskNo("");
+        setSubject("");
         setDescription("");
         setImportance("");
     }
 
     function handleSubmit(e) {
-        e.preventDefault();
-
+        // e.preventDefault();
         postTask();
     }
 
     return (
-        <form onSubmit = {handleSubmit}>
-            <input type="text" name="description" placeholder="description" required />
-            <select name="importance">
+        <form onSubmit = {(e) => handleSubmit(e)}>
+            <label>Subject</label>
+            <input value={subject} placeholder="subject" required onChange={(e) => setSubject(e.target.value)}/>
+            <br /><br />
+            <label>Description</label>
+            <input value={description} placeholder="description" required onChange={(e) => setDescription(e.target.value)}/>
+            <br /><br />
+            <label>Importance</label >
+            <select value={importance} onChange={(e) => setImportance(e.target.value)}>
                 <option value="low">Low</option>
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
             </select>
+            <br /><br />
             <button type="submit" className="btn btn-primary">Submit</button>
         </form>
     );

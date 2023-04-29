@@ -8,27 +8,23 @@ function Task() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    axios.get(`${API_URL}/tasklist`)
-      .then(async res => {
-        const data = await res.json();
-        // console.log(data);
-        // setTasks(data);
-        setTasks(data);
-      }).catch((e) => console.log(e))
+    axios.get(`${ API_URL }/tasklist`)
+      .then(async (res) => {
+        setTasks(res.data.payload);
+      }).catch((error)=> console.log(error) )
   }, [])
-
 
   // function addTask(newTask) {
   //   let updatedTasks = [...tasks, newTask];
   //   setTasks(updatedTasks);
   // }
 
-  function removeTask(taskId) {
-    let updatedTasks = [...tasks];
-    let index = updatedTasks.findIndex(task => task.id === taskId);
-    updatedTasks.splice(index, 1);
-    setTasks(updatedTasks);
-  }
+  // function removeTask(taskId) {
+  //   let updatedTasks = [...tasks];
+  //   let index = updatedTasks.findIndex(task => task.id === taskId);
+  //   updatedTasks.splice(index, 1);
+  //   setTasks(updatedTasks);
+  // }
 
   return (
     <div className="container">
@@ -41,11 +37,11 @@ function Task() {
       <div className="row">
         <div className="col-12">
           <ol>
-            { tasks.payload && tasks.payload.length > 0 ?
-            tasks.payload.map( (task) => {
-              return (
-                <TaskList key={task.id} task={task} id={task.id} removeTask={removeTask} />
-              )
+            { tasks.length > 0 ?
+              tasks.map( (task) => {
+                return (
+                  <TaskList key={task._id} task={task} id={task._id} />
+                )
             }): <p> loading... </p>}
           </ol>
         </div>

@@ -7,6 +7,8 @@ function TaskList(props) {
 
     return (
         <li className={props.task.importance}>
+            {props.task.subject}
+            <br />
             {props.task.description}
             <button id={props.id} className="btn btn-danger" onClick={handleClick}>X</button>
         </li>
