@@ -35,7 +35,7 @@ function Task() {
             { tasks.length > 0 ?
               tasks.map( (task) => {
                 return (
-                  <TaskList key={task._id} task={task} id={task._id} />
+                  <TaskList key={task._id} task={task} id={task._id}/>
                 )
             }): <p> loading... </p>}
           </ol>

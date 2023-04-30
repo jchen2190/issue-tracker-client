@@ -41,10 +41,10 @@ ol li {
   border-radius: 5px;
 }
 
-ol li button {
+/* ol li button {
   float: right;
   margin-top: 5px;
-}
+} */
 
 .container {
   max-width: 600px;
