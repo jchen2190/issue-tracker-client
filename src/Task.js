@@ -14,11 +14,6 @@ function Task() {
       }).catch((error)=> console.log(error) )
   }, [])
 
-  // function addTask(newTask) {
-  //   let updatedTasks = [...tasks, newTask];
-  //   setTasks(updatedTasks);
-  // }
-
   // function removeTask(taskId) {
   //   let updatedTasks = [...tasks];
   //   let index = updatedTasks.findIndex(task => task.id === taskId);
