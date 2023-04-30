@@ -62,8 +62,15 @@ function TaskList(props) {
 
 
     function handleDelete(e) {
-        e.preventDefault();
-
+        fetch(`${API_URL}/deleteTask/${task._id}`, {
+                method: "delete",
+                headers: {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Access-Control-Allow-Origin": "*"
+                }
+            }
+        )
     }
 
     return (
@@ -85,9 +92,9 @@ function TaskList(props) {
                 {
                     isEditing ?
                     <select name="importance" value={task.importance} onChange={updateTask}>
-                        <option value="low" >Low</option>
-                        <option value="medium" >Medium</option>
-                        <option value="high" >High</option>
+                        <option value="low">Low</option>
+                        <option value="medium">Medium</option>
+                        <option value="high">High</option>
                     </select>
                     : <br />
                 }
