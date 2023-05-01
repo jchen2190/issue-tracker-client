@@ -6,7 +6,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import Home from './Home';
 import Tasklist from "./components/Tasklist";
 import OneTask from './components/OneTask';
-import AddTask from './components/AddTask';
 import NotFound from './NotFound';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -16,12 +15,12 @@ function App() {
         <div className="App">
             <Navbar >
                 <Container>
-                    <Navbar.Brand>Issue Tracker</Navbar.Brand>
+                    <Navbar.Brand>IssueTracker</Navbar.Brand>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
                             <Nav.Link href="/">Home</Nav.Link>
-                            <Nav.Link href="/tasks">Tasks</Nav.Link>
+                            <Nav.Link href="/tasklist">Tasks</Nav.Link>
                         </Nav>
                         <Navbar.Text>
                             Signed in as: <a href="/login">John Doe</a>
@@ -33,9 +32,8 @@ function App() {
 
             <Routes>
                 <Route path="/" element={ <Home /> } />
-                <Route path="/tasks" element={ <Tasklist /> } >
+                <Route path="/tasklist" element={ <Tasklist /> } >
                     <Route path=":id" element={ <OneTask /> } />
-                    <Route path="new" element= { <AddTask /> } />
                 </Route>
                 <Route path="*" element={ <NotFound /> } />
             </Routes>

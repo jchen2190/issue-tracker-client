@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import AddTask from "./AddTask"
-import OneTask from "./OneTask"
+import { Link } from 'react-router-dom';
 import { API_URL } from '../constants';
+import AddTask from "./AddTask"
+// import OneTask from "./OneTask"
 import axios from 'axios';
 
-function Task() {
+function Tasklist() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
@@ -15,27 +16,49 @@ function Task() {
   }, [])
 
   return (
-    <div className="container">
-      <div className="row">
-        <div className="col-12">
-          <h1>Task List</h1>
-          <AddTask />
+    <div>
+      <div className="container">
+        <div className="row">
+          <div className="col-12">
+            <h1>Task List</h1>
+            <AddTask />
+          </div>
         </div>
       </div>
-      <div className="row">
-        <div className="col-12">
-          <ol>
-            { tasks.length > 0 ?
-              tasks.map( (task) => {
-                return (
-                  <OneTask key={task._id} task={task} id={task._id}/>
-                )
-            }): <p> loading... </p>}
-          </ol>
-        </div>
+      <div className="container tasklist">
+        <ul>
+          { tasks.length > 0 ?
+              tasks.map((task) => (
+                <li key={task._id}>
+                  <Link to={`/tasklist/${task._id}`} >
+                    <div className="row">
+                      <div className="col-md">
+                        <span>Status</span>
+                      </div>
+                      <div className="col-md">
+                        <span>IssueNo</span>
+                      </div>
+                      <div className="col-md-4">
+                        <span>{task.subject}</span>
+                      </div>
+                      <div className="col-md-2">
+                        <span>Created By Joe</span>
+                      </div>
+                      <div className="col-md">
+                        <span>{task.importance}</span>
+                      </div>
+                      <div className="col-md-3">
+                        <span>Assigned To Joe</span>
+                      </div>
+                    </div>
+                  </Link>
+                </li>
+              ))
+            : <p> loading... </p> }
+        </ul>
       </div>
     </div>
   );
 }
 
-export default Task;
+export default Tasklist;

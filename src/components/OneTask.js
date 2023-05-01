@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { API_URL } from '../constants';
 
-function OneTask(props) {
-    // const { _id } = useParams();
+function OneTask() {
+    const { _id } = useParams();
     const [task, setTask] = useState({
         subject: "",
         description: "",
@@ -12,7 +12,7 @@ function OneTask(props) {
     const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
-        fetch(`${API_URL}/getTaskById/${props.id}`, {
+        fetch(`${API_URL}/getTaskById/${_id}`, {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
@@ -22,7 +22,7 @@ function OneTask(props) {
             let result = await res.json()
             setTask(result.payload);
         })
-    }, [props.id, isEditing])
+    }, [_id, isEditing])
 
     function toggleEditing() {
         isEditing ? setIsEditing(false) : setIsEditing(true);
@@ -39,7 +39,7 @@ function OneTask(props) {
             importance: task.importance
         }
 
-        fetch(`${API_URL}/updateTask/${props.id}`, {
+        fetch(`${API_URL}/updateTask/${task._id}`, {
             method: "put",
             body: JSON.stringify(sendBody),
             headers: {
@@ -89,19 +89,18 @@ function OneTask(props) {
                         <span>{task.description}</span>
                     }
                 </li>
-                {
-                    isEditing ?
-                    <select name="importance" value={task.importance} onChange={updateTask}>
-                        <option value="low">Low</option>
-                        <option value="medium">Medium</option>
-                        <option value="high">High</option>
-                    </select>
-                    : <br />
-                }
-                {
-                    isEditing ? <button type="submit">Submit Edit</button>: <br />
-                }
-                
+                    {
+                        isEditing ?
+                        <select name="importance" value={task.importance} onChange={updateTask}>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                        : <br />
+                    }
+                    {
+                        isEditing ? <button type="submit">Submit Edit</button>: <br />
+                    }
             </form>
             <button onClick={toggleEditing}>
                 { isEditing ? "Stop Editing" : "Edit Task" }
