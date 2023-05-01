@@ -42,7 +42,7 @@ function AddTask() {
 
     return (
         <>
-            <button onClick={toggleEditing}>
+            <button type="button" className="btn btn-primary mb-3" onClick={toggleEditing}>
                 { isEditing ? "- Cancel New Issue" : "+ Add New Issue" }
             </button>
             {isEditing ? 

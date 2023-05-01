@@ -1,4 +1,4 @@
-import { Routes, Route} from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
@@ -12,7 +12,7 @@ import './App.css';
 
 function App() {
     return (
-        <div className="App">
+        <div>
             <Navbar >
                 <Container>
                     <Navbar.Brand>IssueTracker</Navbar.Brand>
@@ -29,12 +29,10 @@ function App() {
                 </Container>
             </Navbar>
 
-
             <Routes>
                 <Route path="/" element={ <Home /> } />
-                <Route path="/tasklist" element={ <Tasklist /> } >
-                    <Route path=":id" element={ <OneTask /> } />
-                </Route>
+                <Route path="/tasklist" element={ <Tasklist /> } />
+                <Route path="/tasklist/:id" element={ <OneTask /> } />
                 <Route path="*" element={ <NotFound /> } />
             </Routes>
         </div>

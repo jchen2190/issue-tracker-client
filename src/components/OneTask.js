@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { API_URL } from '../constants';
 
 function OneTask() {
-    const { _id } = useParams();
+    const { id } = useParams();
     const [task, setTask] = useState({
         subject: "",
         description: "",
@@ -12,7 +12,7 @@ function OneTask() {
     const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
-        fetch(`${API_URL}/getTaskById/${_id}`, {
+        fetch(`${API_URL}/getTaskById/${id}`, {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
@@ -22,7 +22,7 @@ function OneTask() {
             let result = await res.json()
             setTask(result.payload);
         })
-    }, [_id, isEditing])
+    }, [id, isEditing])
 
     function toggleEditing() {
         isEditing ? setIsEditing(false) : setIsEditing(true);
@@ -60,8 +60,7 @@ function OneTask() {
         }))
     }
 
-
-    function handleDelete(e) {
+    function handleDelete() {
         fetch(`${API_URL}/deleteTask/${task._id}`, {
                 method: "delete",
                 headers: {
@@ -74,39 +73,53 @@ function OneTask() {
     }
 
     return (
-        <>
+        <div className="container onetask">
+            <h2>Issue Detail</h2>
             <form onSubmit={handleOnSubmit}>
-                <li className={task.importance}>
+                <div>
+                    <div>Subject:
+                        {
+                            isEditing ?
+                            <input type="text" name="subject" value={task.subject} onChange={updateTask} />
+                            : <span>{task.subject}</span>
+                        }
+                    </div>
+                    <div>Description:
                     {
                         isEditing ?
-                        <input type="text" name="subject" value={task.subject} onChange={updateTask} /> :
-                        <span>{task.subject}</span>
+                        <input type="text" name="description" value={task.description} onChange={updateTask} />
+                        : <span>{task.description}</span>
                     }
-                    <br />
+                    </div>
+                    <div>Priority:
+                        {
+                            isEditing ?
+                            <select name="importance" value={task.importance} onChange={updateTask}>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                            : <span className={task.importance}>{task.importance}</span>
+                        }
+                    </div>
                     {
-                        isEditing ?
-                        <input type="text" name="description" value={task.description} onChange={updateTask} /> :
-                        <span>{task.description}</span>
+                        isEditing ? <button className="btn btn-warning"type="submit">Submit Edit</button>
+                        : <></>
                     }
-                </li>
-                    {
-                        isEditing ?
-                        <select name="importance" value={task.importance} onChange={updateTask}>
-                            <option value="low">Low</option>
-                            <option value="medium">Medium</option>
-                            <option value="high">High</option>
-                        </select>
-                        : <br />
-                    }
-                    {
-                        isEditing ? <button type="submit">Submit Edit</button>: <br />
-                    }
+                </div>
             </form>
-            <button onClick={toggleEditing}>
-                { isEditing ? "Stop Editing" : "Edit Task" }
+            <button className="btn btn-primary p-2 btn-lg" onClick={toggleEditing}>
+                { isEditing ? "Stop Editing" : "Edit Issue" }
             </button>
-            <button className="btn btn-danger" onClick={handleDelete}>X</button>
-        </>
+            <button className="btn btn-danger p-2 btn-lg" onClick={handleDelete}>Delete Issue</button>
+            {/* <form>
+                <label>Comments</label>
+                <div className="form-group">
+                    <textarea placeholder="What are your thoughts?" rows="4"></textarea>
+                    <button className="btn btn-secondary btn-sm">Add Comment</button>
+                </div>
+            </form> */}
+        </div>
     )
 }
 

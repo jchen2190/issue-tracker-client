@@ -20,7 +20,7 @@ function Tasklist() {
       <div className="container">
         <div className="row">
           <div className="col-12">
-            <h1>Task List</h1>
+            <h1>Issues</h1>
             <AddTask />
           </div>
         </div>
@@ -28,15 +28,15 @@ function Tasklist() {
       <div className="container tasklist">
         <ul>
           { tasks.length > 0 ?
-              tasks.map((task) => (
+              tasks.map((task, index) => (
                 <li key={task._id}>
                   <Link to={`/tasklist/${task._id}`} >
                     <div className="row">
                       <div className="col-md">
-                        <span>Status</span>
+                        <span>{index + 1}</span>
                       </div>
                       <div className="col-md">
-                        <span>IssueNo</span>
+                        <span>Status</span>
                       </div>
                       <div className="col-md-4">
                         <span>{task.subject}</span>
@@ -47,7 +47,7 @@ function Tasklist() {
                       <div className="col-md">
                         <span>{task.importance}</span>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-md-2">
                         <span>Assigned To Joe</span>
                       </div>
                     </div>
