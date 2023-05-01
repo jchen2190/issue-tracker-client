@@ -22,32 +22,26 @@ select, button.btn.btn-primary, button.btn.btn-danger {
   padding: 5px;
   line-height: 1em;
 }
-ol {
-  padding: 20px 20px 20px 45px;
-  background: #fff;
-  border-radius: 5px;
-  border: 4px solid #efefef;
-}
-ol li {
-  background: #fff;
-  margin: 20px 0;
-  font-size: 1.75em;
-  padding: 5px 10px 5px 20px;
-  border-radius: 5px;
-}
-/* ol li button {
-  float: right;
-  margin-top: 5px;
+/* .tasklist ul {
+  border: 4px solid black;
 } */
-.container {
-  max-width: 600px;
+.tasklist ul li {
+  padding: 10px 0;
+  border-bottom: 1px solid rgb(215, 215, 215)
 }
-ol li.low { 
+.tasklist a {
+  text-decoration: none;
+  color: black;
+}
+.tasklist li:active, .tasklist li:hover {
+  background-color: lightgrey;
+}
+ul li.low { 
   background: white;
 }
-ol li.medium { 
+ul li.medium { 
   background: lightpink;
 }
-ol li.high { 
+ul li.high { 
   background: lightcoral;
 }
