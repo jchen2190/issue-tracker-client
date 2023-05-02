@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { API_URL } from '../constants';
-import AddTask from "./AddTask"
-// import OneTask from "./OneTask"
+import AddTask from "./AddTask";
 import axios from 'axios';
+import { formatTime } from './formatTime';
 
 function Tasklist() {
+
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
@@ -16,7 +17,7 @@ function Tasklist() {
   }, [])
 
   return (
-    <div>
+    <>
       <div className="container">
         <div className="row">
           <div className="col-12">
@@ -36,19 +37,22 @@ function Tasklist() {
                         <span>{index + 1}</span>
                       </div>
                       <div className="col-md">
-                        <span>Status</span>
+                        <span>{task.status}</span>
                       </div>
-                      <div className="col-md-4">
+                      <div className="col-md-3">
                         <span>{task.subject}</span>
                       </div>
                       <div className="col-md-2">
                         <span>Created By Joe</span>
                       </div>
-                      <div className="col-md">
-                        <span>{task.importance}</span>
-                      </div>
                       <div className="col-md-2">
-                        <span>Assigned To Joe</span>
+                        <span>{formatTime(task.created)}</span>
+                      </div>
+                      <div className="col-md">
+                        <span className={task.importance}>{task.importance}</span>
+                      </div>
+                      <div className="col-md">
+                        <span>Assigned To:</span>
                       </div>
                     </div>
                   </Link>
@@ -57,7 +61,7 @@ function Tasklist() {
             : <p> loading... </p> }
         </ul>
       </div>
-    </div>
+    </>
   );
 }
 

@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { API_URL } from '../constants';
+import { formatTime } from './formatTime';
 
 function OneTask() {
     const { id } = useParams();
+    const navigate = useNavigate();
+
     const [task, setTask] = useState({
         subject: "",
         description: "",
+        status: "",
         importance: ""
     })
     const [isEditing, setIsEditing] = useState(false);
@@ -36,6 +40,7 @@ function OneTask() {
         const sendBody = {
             subject: task.subject,
             description: task.description,
+            status: task.status,
             importance: task.importance
         }
 
@@ -69,7 +74,7 @@ function OneTask() {
                     "Access-Control-Allow-Origin": "*"
                 }
             }
-        )
+        ).then(() => navigate("/tasklist"))
     }
 
     return (
@@ -90,6 +95,19 @@ function OneTask() {
                         <input type="text" name="description" value={task.description} onChange={updateTask} />
                         : <span>{task.description}</span>
                     }
+                    </div>
+                    <div>Created On:
+                        { formatTime(task.created) }
+                    </div>
+                    <div>Status:
+                        {
+                            isEditing ?
+                            <select name="status" value={task.status} onChange={updateTask}>
+                                <option value="open">Open</option>
+                                <option value="closed">Closed</option>
+                            </select>
+                            : <span>{task.status}</span>
+                        }
                     </div>
                     <div>Priority:
                         {

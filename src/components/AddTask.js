@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import { API_URL } from '../constants';
 
 function AddTask() {
+    const [status, setStatus] = useState("open");
     const [subject, setSubject] = useState("");
     const [description, setDescription] = useState("");
-    const [importance, setImportance] = useState("");
+    const [importance, setImportance] = useState("low");
     const [isEditing, setIsEditing] = useState(false);
 
     async function postTask() { 
         let newTask = {
+            status: status,
+            created: Date.now(),
             subject: subject,
             description: description,
             importance: importance
@@ -29,7 +32,6 @@ function AddTask() {
         // })
         setSubject("");
         setDescription("");
-        setImportance("");
     }
 
     function toggleEditing() {
@@ -37,6 +39,7 @@ function AddTask() {
     }
 
     function handleSubmit(e) {
+        // e.preventDefault();
         postTask();
     }
 
@@ -46,7 +49,13 @@ function AddTask() {
                 { isEditing ? "- Cancel New Issue" : "+ Add New Issue" }
             </button>
             {isEditing ? 
-                <form onSubmit = {(e) => handleSubmit(e)}>
+                <form onSubmit = {handleSubmit}>
+                    <label>Status</label>
+                    <select value={status} onChange={(e) => setStatus(e.target.value)}>
+                        <option value="open">Open</option>
+                        <option value="closed">Closed</option>
+                    </select>
+                    <br /><br />
                     <label>Subject</label>
                     <input value={subject} placeholder="subject" required onChange={(e) => setSubject(e.target.value)}/>
                     <br /><br />
@@ -54,7 +63,7 @@ function AddTask() {
                     <input value={description} placeholder="description" required onChange={(e) => setDescription(e.target.value)}/>
                     <br /><br />
                     <label>Priority</label>
-                    <select value={importance} onChange={(e) => setImportance(e.target.value)}>
+                    <select value={importance} required onChange={(e) => setImportance(e.target.value)}>
                         <option value="low">Low</option>
                         <option value="medium">Medium</option>
                         <option value="high">High</option>
