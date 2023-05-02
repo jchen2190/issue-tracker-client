@@ -34,19 +34,27 @@ select, button.btn.btn-primary, button.btn.btn-danger {
 .tasklist li:active, .tasklist li:hover {
   background-color: lightgrey;
 }
-.low, .medium, .high {
+.low, .medium, .high, .open, .closed {
   margin: 5px;
   padding: 2px 10px;
-  border-radius: 10px;
+  border-radius: 15px;
 }
 .low {
-  background: white;
+  background: rgb(248, 216, 221);
 }
 .medium {
-  background: lightpink;
+  background: rgb(237, 157, 157);
 }
 .high {
-  background: lightcoral;
+  background: rgb(225, 88, 88);
+}
+.open {
+  color: white;
+  background: darkgreen;
+}
+.closed {
+  color: white;
+  background: darkred;
 }
 
 @media (width >= 768px) {

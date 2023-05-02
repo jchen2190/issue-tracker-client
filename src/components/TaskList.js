@@ -37,7 +37,7 @@ function Tasklist() {
                         <span>{index + 1}</span>
                       </div>
                       <div className="col-md">
-                        <span>{task.status}</span>
+                        <span className={task.status}>{task.status}</span>
                       </div>
                       <div className="col-md-3">
                         <span>{task.subject}</span>
