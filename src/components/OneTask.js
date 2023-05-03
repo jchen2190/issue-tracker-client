@@ -16,7 +16,7 @@ function OneTask() {
     const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
-        fetch(`${API_URL}/getTaskById/${id}`, {
+        fetch(`${API_URL}/issue/getTaskById/${id}`, {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
@@ -44,7 +44,7 @@ function OneTask() {
             importance: task.importance
         }
 
-        fetch(`${API_URL}/updateTask/${task._id}`, {
+        fetch(`${API_URL}/issue/updateTask/${task._id}`, {
             method: "put",
             body: JSON.stringify(sendBody),
             headers: {
@@ -66,7 +66,7 @@ function OneTask() {
     }
 
     function handleDelete() {
-        fetch(`${API_URL}/deleteTask/${task._id}`, {
+        fetch(`${API_URL}/issue/deleteTask/${task._id}`, {
                 method: "delete",
                 headers: {
                     "Accept": "application/json",

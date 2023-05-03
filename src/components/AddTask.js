@@ -17,7 +17,7 @@ function AddTask() {
             importance: importance
         }
 
-        fetch(`${API_URL}/createTask`, {
+        fetch(`${API_URL}/issue/createTask`, {
             method: "post",
             body: JSON.stringify(newTask),
             headers: {

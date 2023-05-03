@@ -10,7 +10,7 @@ function Tasklist() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    axios.get(`${ API_URL }/tasklist`)
+    axios.get(`${ API_URL }/issue/tasklist`)
       .then(async (res) => {
         setTasks(res.data.payload);
       }).catch((error)=> console.log(error) )
@@ -31,7 +31,7 @@ function Tasklist() {
           { tasks.length > 0 ?
               tasks.map((task, index) => (
                 <li key={task._id}>
-                  <Link to={`/tasklist/${task._id}`} >
+                  <Link to={`/issue/tasklist/${task._id}`} >
                     <div className="row">
                       <div className="col-md">
                         <span>{index + 1}</span>
