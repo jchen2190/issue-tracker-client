@@ -1,22 +1,16 @@
 import React, { useState } from 'react';
 import { API_URL } from '../constants';
+import { useNavigate } from 'react-router-dom';
 // import axios from 'axios';
 
 function LogIn(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
+    
+    const navigate = useNavigate();
 
     async function logInUser() {
-        // try {
-        //     const res = await axios.post(`${API_URL}/user/logInUser`, {
-        //         username: username,
-        //         password: password
-        //     });
-        //     console.log(res);
-        // } catch (error) {
-        //     console.log(error);
-        // }
         let logInUser = {
             username: username,
             password: password,
@@ -34,7 +28,10 @@ function LogIn(props) {
                 if (data.error) {
                     setMessage(data.error);
                 } else {
-                    setMessage(data.message);
+                    // setMessage(data.message); // User logged in successfully
+                    alert("Login Successful");
+                    // window.localStorage("token", data.payload);
+                    window.location.href="./user"
                 }
             })
             .catch(error => console.error(error));
@@ -43,6 +40,10 @@ function LogIn(props) {
     async function handleSubmit(e) {
         e.preventDefault();
         logInUser();
+    }
+
+    function handleClick() {
+        navigate("/signup");
     }
 
     return (
@@ -60,7 +61,7 @@ function LogIn(props) {
                 {message && <div>{message}</div>}
                 <button type="submit">Log In</button>
             </form>
-            <button onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
+            <button onClick={handleClick}>Don't have an account? Register here.</button>
         </div>
     );
 }

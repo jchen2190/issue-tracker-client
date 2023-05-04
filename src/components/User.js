@@ -1,19 +1,31 @@
 import React, { useState } from 'react';
-import Login from './LogIn';
-import SignUp from './SignUp';
+import { API_URL } from '../constants';
 
 function User() {
-    const [currentForm, setCurrentForm] = useState('login');
+    const [message, setMessage] = useState("");
 
-    const toggleForm = (formName) => {
-        setCurrentForm(formName);
-    }
+
+    fetch(`${API_URL}/user/userData`, {
+        method: "post",
+        // body: JSON.stringify(payload),
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*"
+        }
+    }).then(async res => res.json())
+        .then(data => {
+            if (data.error) {
+                setMessage(data.error);
+            } else {
+                setMessage(data.message);
+            }
+        })
+        .catch(error => console.error(error));
 
     return (
         <div>
-            {
-                currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <SignUp onFormSwitch={toggleForm} />
-            }
+            {message}
         </div>
     );
 }

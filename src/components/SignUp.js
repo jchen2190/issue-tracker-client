@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { API_URL } from '../constants';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function SignUp () {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
 
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     async function postUser() {
         let newUser = {
@@ -38,8 +38,13 @@ function SignUp () {
         postUser();
     }
 
+    function handleClick() {
+        navigate("/login")
+    }
+
     return (
         <div className="auth-form-container">
+            <h3>Sign Up</h3>
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Username</label>
@@ -52,7 +57,7 @@ function SignUp () {
                 <button type="submit">Sign Up</button>
                 {message && <div>{message}</div>}
             </form>
-            <button>Already have an account? Login here.</button>
+            <button onClick={handleClick}>Already have an account? Login here.</button>
         </div>
     )
 }
