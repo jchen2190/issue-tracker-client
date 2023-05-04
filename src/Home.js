@@ -1,6 +1,13 @@
+import React from 'react';
+// import { useLocation, useNavigate } from 'react-router-dom';
+
 function Home() {
+    // const location = useLocation()
+
     return (
-        <h1>Homepage</h1>
+        <div>
+            <h1>Welcome {}</h1>
+        </div>
     );
 }
 

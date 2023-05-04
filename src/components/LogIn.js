@@ -3,7 +3,7 @@ import { API_URL } from '../constants';
 import { useNavigate } from 'react-router-dom';
 // import axios from 'axios';
 
-function LogIn(props) {
+function LogIn() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
@@ -29,12 +29,36 @@ function LogIn(props) {
                     setMessage(data.error);
                 } else {
                     // setMessage(data.message); // User logged in successfully
-                    alert("Login Successful");
-                    // window.localStorage("token", data.payload);
-                    window.location.href="./user"
+                    // alert("Login Successful");
+                    console.log(data.payload);
+                    // TODO: properly save cookie or token after logging in
+                    window.localStorage.setItem("token", data.payload);
+                    navigate("/user");
                 }
             })
             .catch(error => console.error(error));
+
+        // try {
+        //     const response = await axios(`${API_URL}/user/logInUser`, {
+        //         method: "post",
+        //         body: JSON.stringify(data),
+        //         headers: {
+        //             "Accept": "application/json",
+        //             "Content-Type": "application/json",
+        //             "Access-Control-Allow-Origin": "*"
+        //         }
+        //     });
+
+        //     if (response.data.error) {
+        //         setMessage(response.data.error); // "Invalid Password"
+        //     } else {
+        //         alert("Login Successful");
+        //         window.localStorage.setItem("token", response.data);
+        //         navigate("/", {state: {id:username}});
+        //     }
+        // } catch (error) {
+        //     console.error(error);
+        // }
     }
 
     async function handleSubmit(e) {
@@ -42,7 +66,8 @@ function LogIn(props) {
         logInUser();
     }
 
-    function handleClick() {
+    function handleClick(e) {
+        e.preventDefault();
         navigate("/signup");
     }
 
@@ -52,15 +77,16 @@ function LogIn(props) {
             <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="username">Username</label>
-                    <input value={username} type="text" name="username" id="username" placeholder="Username" onChange={(e) => setUsername(e.target.value)}/>
+                    <input value={username} type="text" name="username" id="username" placeholder="Username" onChange={(e)=>setUsername(e.target.value)}/>
                 </div>
                 <div>
                     <label htmlFor="password">Password</label>
-                    <input value={password} type="password" name="password" id="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
+                    <input value={password} type="password" name="password" id="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
                 </div>
                 {message && <div>{message}</div>}
                 <button type="submit">Log In</button>
             </form>
+            <p>OR</p>
             <button onClick={handleClick}>Don't have an account? Register here.</button>
         </div>
     );

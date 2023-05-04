@@ -25,9 +25,10 @@ function SignUp () {
         }).then(async res => res.json())
             .then(data => {
                 if (data.error) {
-                    setMessage(data.error);
+                    setMessage(data.error); // "Username Taken"
                 } else {
-                    setMessage(data.message);
+                    setMessage(data.message); // "User created successfully"
+                    navigate("/login");
                 }
             })
             .catch(error => console.error(error));
@@ -57,6 +58,7 @@ function SignUp () {
                 <button type="submit">Sign Up</button>
                 {message && <div>{message}</div>}
             </form>
+            <br />
             <button onClick={handleClick}>Already have an account? Login here.</button>
         </div>
     )
