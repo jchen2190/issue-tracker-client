@@ -49,7 +49,7 @@ function AddTask() {
                 { isEditing ? "- Cancel New Issue" : "+ Add New Issue" }
             </button>
             {isEditing ? 
-                <form onSubmit = {handleSubmit}>
+                <form onSubmit = {handleSubmit} className="addTaskForm">
                     <label>Status</label>
                     <select value={status} onChange={(e) => setStatus(e.target.value)}>
                         <option value="open">Open</option>

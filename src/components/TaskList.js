@@ -31,7 +31,7 @@ function Tasklist() {
           { tasks.length > 0 ?
               tasks.map((task, index) => (
                 <li key={task._id}>
-                  <Link to={`/issue/tasklist/${task._id}`} >
+                  <Link to={`/tasklist/${task._id}`} >
                     <div className="row">
                       <div className="col-md">
                         <span>{index + 1}</span>

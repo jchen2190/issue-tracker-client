@@ -5,12 +5,12 @@ nav {
 h1 {
   text-align: center;
 }
-form {
+.addTaskForm {
   background: #efefef;
   padding: 20px;
   border-radius: 5px;
 }
-input, select, button {
+.addTaskForm input, select, button {
   display: inline-block;
   margin: 10px 5px;
   vertical-align: top;
@@ -55,6 +55,13 @@ select, button.btn.btn-primary, button.btn.btn-danger {
 .closed {
   color: white;
   background: darkred;
+}
+
+.auth-form-container {
+  text-align: center;
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* background-image: linear-gradient(79deg, #fcfced, 48% #fcedfc, #ebf6ff) */
 }
 
 @media (width >= 768px) {

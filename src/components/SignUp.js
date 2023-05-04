@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { API_URL } from '../constants';
+// import { useNavigate } from 'react-router-dom';
 
-function SignUp (props) {
+function SignUp () {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const [message, setMessage] = useState("");
+
+    // const navigate = useNavigate();
 
     async function postUser() {
         let newUser = {
@@ -18,7 +22,15 @@ function SignUp (props) {
                 "Content-Type": "application/json",
                 "Access-Control-Allow-Origin": "*"
             }
-        })
+        }).then(async res => res.json())
+            .then(data => {
+                if (data.error) {
+                    setMessage(data.error);
+                } else {
+                    setMessage(data.message);
+                }
+            })
+            .catch(error => console.error(error));
     }
 
     function handleSubmit(e) {
@@ -38,8 +50,9 @@ function SignUp (props) {
                     <input value={password} type="password" name="password" id="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
                 </div>
                 <button type="submit">Sign Up</button>
+                {message && <div>{message}</div>}
             </form>
-            <button onClick={(() => props.onFormSwitch('login'))}>Already have an account? Login here.</button>
+            <button>Already have an account? Login here.</button>
         </div>
     )
 }
