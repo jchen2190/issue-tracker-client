@@ -3,7 +3,7 @@ import { API_URL } from '../constants';
 
 function User() {
     const [username, setUsername] = useState("");
-    const [message, setMessage] = useState("");
+    const [authorize, setAuthorize] = useState(false);
 
     useEffect(() => {
         async function fetchData() {
@@ -16,8 +16,8 @@ function User() {
                     headers: {
                         "Accept": "application/json",
                         "Content-Type": "application/json",
-                        "Access-Control-Allow-Origin": "*",
-                        // "Cookie": `connect.sid=${cookie}`
+                        "Access-Control-Allow-Origin": "http://localhost:3030",
+                        "Access-Control-Allow-Credentials": true
                     },
                     // body: JSON.stringify({
                     //     token
@@ -28,10 +28,13 @@ function User() {
                 console.log(responseData);
 
                 if (responseData.error) {
-                    setMessage(responseData.error);
+                    setAuthorize(false);
+                    console.log(responseData.message);
                 } else {
-                    setUsername(responseData.payload.username)
-                    setMessage(responseData.message);
+                    setUsername("Test");
+                    // setUsername(responseData.payload.username)
+                    console.log(responseData.message);
+                    setAuthorize(true);
                 }
             } catch (error) {
                 console.error(error);
@@ -43,8 +46,12 @@ function User() {
 
     return (
         <div>
-            <h1>Welcome {username}</h1>
-            {message}
+            { authorize ? 
+                <div>
+                    <h1>Welcome {username}</h1>
+                </div>
+                : <div> Log In </div>
+            }
         </div>
     )
 }

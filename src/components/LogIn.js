@@ -21,19 +21,20 @@ function LogIn() {
             headers: {
                 "Accept": "application/json",
                 "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*"
-            }
+                // "Access-Control-Allow-Origin": "http://localhost:3030",
+                // "Access-Control-Allow-Credentials": 'true'
+            },
+            credentials: 'include' // enable cookies
         }).then(async res => res.json())
             .then(data => {
                 if (data.error) {
                     setMessage(data.error);
                 } else {
-                    // setMessage(data.message); // User logged in successfully
-                    // alert("Login Successful");
-                    console.log(data.payload);
+                    setMessage(data.message); // User logged in successfully
+                    console.log(data);
                     // TODO: properly save cookie or token after logging in
                     window.localStorage.setItem("token", data.payload);
-                    navigate("/user");
+                    // navigate("/user");
                 }
             })
             .catch(error => console.error(error));

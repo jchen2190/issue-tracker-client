@@ -10,6 +10,7 @@ import Tasklist from "./components/Tasklist";
 import OneTask from './components/OneTask';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
+import LogOut from './components/LogOut';
 import NotFound from './NotFound';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
@@ -40,6 +41,7 @@ function App() {
                 <Route path="/login" element={ <LogIn /> } />
                 <Route path="/signup" element = { <SignUp /> } />
                 <Route path="/user" element={ <User /> } />
+                <Route path="/logout" element= { <LogOut /> } />
                 <Route path="*" element={ <NotFound /> } />
             </Routes>
         </div>
