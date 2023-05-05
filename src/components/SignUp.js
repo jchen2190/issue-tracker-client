@@ -57,23 +57,30 @@ function SignUp () {
     }
 
     return (
-        <div className="signup-form">
-            <h3>Register</h3>
+        <div className="signup-form d-flex container justify-content-center align-items-center">
             <form onSubmit={handleSubmit}>
+                <h3 className="d-flex justify-content-center">IssueTracker</h3>
+                <p className="d-flex justify-content-center">Register</p>
+                <div className="form-outline mb-4">
+                    <label className="form-label" htmlFor="username">Username</label>
+                    <input value={username} type="text" name="username" className="form-control" placeholder="Username" onChange={(e) => setUsername(e.target.value)}/>
+                </div>
+                <div className="form-outline mb-4">
+                    <label className="form-label" htmlFor="password">Password</label>
+                    <input value={password} type="password" name="password" className="form-control" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
+                </div>
+                <button type="submit" className="btn btn-primary btn-lg w-100 mb-4">Register</button>
                 {
                     success && <p style={{color:'green'}}>{success}</p>
                 }
                 {
                     error && <p style={{color:'red'}}>{error}</p>
                 }
-                <label htmlFor="username">Username</label>
-                <input value={username} type="text" name="username" id="username" placeholder="Username" onChange={(e) => setUsername(e.target.value)}/>
-                <label htmlFor="password">Password</label>
-                <input value={password} type="password" name="password" id="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
-                <button type="submit">Sign Up</button>
+                <div className="d-flex justify-content-center align-items-center">
+                    <p className="m-0">Already have an account?</p>
+                    <button className="btn btn-outline-primary" onClick={handleClick}>Login here.</button>
+                </div>
             </form>
-            <br />
-            <button onClick={handleClick}>Already have an account? Login here.</button>
         </div>
     )
 }

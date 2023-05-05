@@ -35,17 +35,18 @@ function User() {
                 console.error(error);
             }
         }
-
-    fetchData();
+        fetchData();
     }, []);
 
-    const onLogOut = () => {
+    const onLogOut = (e) => {
+        e.preventDefault();
         fetch(`${API_URL}/user/logOutUser`, {
             method: "post",
             credentials: 'include'
         }).then(async res => {
             if (res.ok) {
-                console.log("User logged out");
+                setAuthorize(false);
+                setUsername("");
             } else {
                 throw new Error('Logout failed');
             }

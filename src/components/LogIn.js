@@ -37,7 +37,7 @@ function LogIn() {
                     setMessage(data.message); // User logged in successfully
                     setTimeout(() => {
                         navigate("/user");
-                    }, 2000)
+                    }, 1000)
                 }
             })
             .catch(error => console.error(error));
@@ -54,23 +54,29 @@ function LogIn() {
     }
 
     return (
-        <div className="login-form">
-            <h3>Log In</h3>
+        <div className="login-form d-flex container justify-content-center align-items-center">
             <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username</label>
-                <input value={username} type="text" name="username" id="username" placeholder="Username" onChange={(e)=>setUsername(e.target.value)}/>
-                <label htmlFor="password">Password</label>
-                <input value={password} type="password" name="password" id="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)}/>
+                <h3 className="d-flex justify-content-center">IssueTracker</h3>
+                <p className="d-flex justify-content-center">Please login to your account</p>
+                <div className="form-outline mb-4">
+                    <label className="form-label" htmlFor="username">Username</label>
+                    <input value={username} type="text" name="username" className="form-control" onChange={(e)=>setUsername(e.target.value)}/>
+                </div>
+                <div className="form-outline mb-4">
+                    <label className="form-label" htmlFor="password">Password</label>
+                    <input value={password} type="password" name="password" className="form-control" onChange={(e)=>setPassword(e.target.value)}/>
+                </div>
                 {
-                    success ? message : <button type="submit">Log In</button>
+                    success ? message : <button type="submit" className="btn btn-primary btn-lg w-100 mb-4">Log In</button>
                 }
                 {
                     error ? message : <></>
                 }
-                
+                <div className="d-flex justify-content-center align-items-center">
+                    <p className="m-0">Don't have an account?</p>
+                    <button className="btn btn-outline-primary" onClick={handleClick}>Register</button>
+                </div>
             </form>
-            <p>OR</p>
-            <button onClick={handleClick}>Don't have an account? Register here.</button>
         </div>
     );
 }
