@@ -1,39 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { API_URL } from '../constants';
+import { useNavigate } from 'react-router-dom';
 
 function User() {
     const [username, setUsername] = useState("");
     const [authorize, setAuthorize] = useState(false);
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         async function fetchData() {
             try {
-                // TODO: get token or cookie from session
-                // const token = window.localStorage.getItem('token');
-
                 const response = await fetch(`${API_URL}/user/userData`, {
                     method: 'post',
                     headers: {
                         "Accept": "application/json",
                         "Content-Type": "application/json",
-                        "Access-Control-Allow-Origin": "http://localhost:3030",
-                        "Access-Control-Allow-Credentials": true
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Credentials": "true"
                     },
-                    // body: JSON.stringify({
-                    //     token
-                    // }),
+                    credentials: 'include' // enable cookies
                 });
 
                 const responseData = await response.json();
-                console.log(responseData);
 
                 if (responseData.error) {
                     setAuthorize(false);
                     console.log(responseData.message);
                 } else {
-                    setUsername("Test");
-                    // setUsername(responseData.payload.username)
-                    console.log(responseData.message);
+                    setUsername(responseData.payload.username)
                     setAuthorize(true);
                 }
             } catch (error) {
@@ -44,13 +39,34 @@ function User() {
     fetchData();
     }, []);
 
+    const onLogOut = () => {
+        fetch(`${API_URL}/user/logOutUser`, {
+            method: "post",
+            credentials: 'include'
+        }).then(async res => {
+            if (res.ok) {
+                console.log("User logged out");
+            } else {
+                throw new Error('Logout failed');
+            }
+        }).catch(error => {
+            console.error(error);
+        })
+        navigate("/");
+    }
+
     return (
         <div>
             { authorize ? 
                 <div>
                     <h1>Welcome {username}</h1>
+                    <h2>This is issues assigned to you:</h2>
+                    <div>
+                        {/* List of issues */}
+                    </div>
+                    <button onClick={onLogOut}> Log Out </button>
                 </div>
-                : <div> Log In </div>
+                : <div>Log in to see your profile</div>
             }
         </div>
     )
