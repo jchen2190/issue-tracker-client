@@ -7,8 +7,8 @@ h1 {
 }
 .addTaskForm {
   background: #e1e1e1;
-  /* padding: 20px;
-  border-radius: 5px; */
+  padding: 20px;
+  border-radius: 5px;
 }
 .addTaskForm input, select, button {
   display: inline-block;
@@ -22,10 +22,12 @@ select, button.btn.btn-primary, button.btn.btn-danger {
 }
 .tasklist ul {
   list-style-type: none;
+  margin: 0;
+  padding: 0;
 }
 .tasklist ul li {
-  padding: 10px 0;
-  border-bottom: 1px solid rgb(215, 215, 215)
+  padding: 10px;
+  border-bottom: 1px solid rgb(215, 215, 215);
 }
 .tasklist a {
   text-decoration: none;
@@ -35,8 +37,9 @@ select, button.btn.btn-primary, button.btn.btn-danger {
   background-color: lightgrey;
 }
 .low, .medium, .high, .open, .closed {
-  margin: 5px;
-  padding: 2px 10px;
+  text-transform: uppercase;
+  font-size: .8rem;
+  padding: 3px;
   border-radius: 15px;
 }
 .low {

@@ -18,37 +18,44 @@ function Tasklist() {
 
   return (
     <>
-      <h1>Issues</h1>
-      <div className="d-flex container justify-content-start align-items-center">
-        <AddTask />
+      <div className="d-flex container justify-content-center align-items-center">
+        <div className="row">
+          <div className="col-12">
+            <h1>Issues</h1>
+            <AddTask />
+          </div>
+        </div>
       </div>
       <div className="container tasklist">
+        <ul>
+          <div></div>
+        </ul>
         <ul>
           { tasks.length > 0 ?
               tasks.map((task, index) => (
                 <li key={task._id}>
                   <Link to={`/tasklist/${task._id}`} >
                     <div className="row">
-                      <div className="col-md">
+                      <div className="col-lg text-lg-center">
                         <span>{index + 1}</span>
                       </div>
-                      <div className="col-md">
+                      <div className="col-lg text-lg-center">
                         <span className={task.status}>{task.status}</span>
                       </div>
-                      <div className="col-md-3">
+                      <div className="col-lg-3 ">
                         <span>{task.subject}</span>
                       </div>
-                      <div className="col-md-2">
-                        <span>Created By Joe</span>
+                      <div className="col-lg-2 text-lg-center">
+                        <span>{task.author}</span>
                       </div>
-                      <div className="col-md-2">
+                      <div className="col-lg-2 text-lg-center">
                         <span>{formatTime(task.created)}</span>
                       </div>
-                      <div className="col-md">
+                      <div className="col-lg text-lg-center">
                         <span className={task.importance}>{task.importance}</span>
                       </div>
-                      <div className="col-md">
-                        <span>Assigned To:</span>
+                      <div className="col-lg text-lg-center">
+                        <span>{task.assignTo}</span>
                       </div>
                     </div>
                   </Link>

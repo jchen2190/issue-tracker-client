@@ -72,33 +72,33 @@ function AddTask() {
     }
 
     return (
-        <div>
+        <div className="d-flex container justify-content-center align-items-center">
             <button type="button" className="btn btn-primary mb-3 justify-content-center" onClick={toggleEditing}>
                 { isEditing ? "- Cancel New Issue" : "+ Add New Issue" }
             </button>
             {isEditing ? 
                 <form onSubmit = {handleSubmit} className="addTaskForm">
-                    <div>
-                        <label>Status</label>
+                    <div className="form-outline mb-2">
+                        <label className="form-label">Status</label>
                         <select value={status} onChange={(e) => setStatus(e.target.value)}>
                             <option value="open">Open</option>
                             <option value="closed">Closed</option>
                         </select>
                     </div>
-                    <div>
-                        <label>Subject</label>
-                        <input value={subject} placeholder="subject" required onChange={(e) => setSubject(e.target.value)}/>
+                    <div className="form-outline mb-2">
+                        <label className="form-label">Subject</label>
+                        <input value={subject} required onChange={(e) => setSubject(e.target.value)}/>
                     </div>
-                    <div>
-                        <label>Description</label>
-                        <input value={description} placeholder="description" required onChange={(e) => setDescription(e.target.value)}/>
+                    <div className="form-outline mb-2">
+                        <label className="form-label">Description</label>
+                        <input value={description} required onChange={(e) => setDescription(e.target.value)}/>
                     </div>
-                    <div>
-                        <label>Assigned To</label>
-                        <input value={assignTo} placeholder="Assign To User" required onChange={(e) => setAssignTo(e.target.value)} />
+                    <div className="form-outline mb-2">
+                        <label className="form-label">Assigned To</label>
+                        <input value={assignTo} required onChange={(e) => setAssignTo(e.target.value)} />
                     </div>
-                    <div>
-                        <label>Due Date:</label>
+                    <div className="form-outline mb-2">
+                        <label className="form-label">Due Date:</label>
                         <input
                             value={dueDate.toISOString().slice(0, 10)}
                             type="date"
@@ -106,8 +106,8 @@ function AddTask() {
                             autoComplete="off"
                             onChange={(e) => setDueDate(new Date(e.target.value))} />
                     </div>
-                    <div>
-                        <label>Priority</label>
+                    <div className="form-outline mb-2">
+                        <label className="form-label">Priority</label>
                         <select value={importance} required onChange={(e) => setImportance(e.target.value)}>
                             <option value="low">Low</option>
                             <option value="medium">Medium</option>
