@@ -46,7 +46,7 @@ function SignUp () {
     }
 
     return (
-        <div className="signup-form d-flex container justify-content-center align-items-center">
+        <div className="d-flex container justify-content-center align-items-center">
             <form onSubmit={handleSubmit}>
                 <h3 className="d-flex justify-content-center">IssueTracker</h3>
                 <p className="d-flex justify-content-center">Register</p>

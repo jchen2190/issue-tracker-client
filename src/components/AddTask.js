@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { API_URL } from '../constants';
 
 function AddTask() {
@@ -11,30 +11,34 @@ function AddTask() {
     const [importance, setImportance] = useState("low");
     const [isEditing, setIsEditing] = useState(false);
 
-    async function postTask() { 
-        try {
-            const response = await fetch(`${API_URL}/user/userData`, {
-                method: 'post',
-                headers: {
-                    "Accept": "application/json",
-                    "Content-Type": "application/json",
-                    "Access-Control-Allow-Origin": "*",
-                    "Access-Control-Allow-Credentials": "true"
-                },
-                credentials: 'include' // enable cookies
-            });
-            const responseData = await response.json();
-            if (responseData.error) {
-                // setAuthorize(false);
-                console.log(responseData.message);
-            } else {
-                setAuthor(responseData.payload.username)
-                console.log(responseData);
-                // setAuthorize(true);
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await fetch(`${API_URL}/user/userData`, {
+                    method: 'post',
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json",
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Credentials": "true"
+                    },
+                    credentials: 'include' // enable cookies
+                });
+
+                const responseData = await response.json();
+                if (responseData.error) {
+                    console.log(responseData.message);
+                } else {
+                    setAuthor(responseData.payload.username)
+                }
+            } catch (error) {
+                console.error(error);
             }
-        } catch (error) {
-            console.error(error);
         }
+        fetchData();
+    }, []);
+    
+    async function postTask() { 
 
         let newTask = {
             status: status,
@@ -46,7 +50,6 @@ function AddTask() {
             importance: importance,
             dueDate: dueDate
         }
-
         fetch(`${API_URL}/issue/createTask`, {
             method: "post",
             body: JSON.stringify(newTask),
@@ -65,13 +68,12 @@ function AddTask() {
     }
 
     function handleSubmit(e) {
-        // e.preventDefault();
         postTask();
     }
 
     return (
-        <>
-            <button type="button" className="btn btn-primary mb-3" onClick={toggleEditing}>
+        <div>
+            <button type="button" className="btn btn-primary mb-3 justify-content-center" onClick={toggleEditing}>
                 { isEditing ? "- Cancel New Issue" : "+ Add New Issue" }
             </button>
             {isEditing ? 
@@ -97,12 +99,12 @@ function AddTask() {
                     </div>
                     <div>
                         <label>Due Date:</label>
-                        <input value={
-                            dueDate.getFullYear().toString() + "-" + (dueDate.getMonth() + 1).toString().padStart(2, 0) + "-" + dueDate.getDate().toString().padStart(2, 0)}
+                        <input
+                            value={dueDate.toISOString().slice(0, 10)}
                             type="date"
                             placeholder="Date Due"
                             autoComplete="off"
-                            onChange={(e) => setDueDate(e.target.value)} />
+                            onChange={(e) => setDueDate(new Date(e.target.value))} />
                     </div>
                     <div>
                         <label>Priority</label>
@@ -116,7 +118,7 @@ function AddTask() {
                 </form>
                 : <></>
             }
-        </>
+        </div>
     );
 }
 

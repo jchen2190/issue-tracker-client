@@ -18,13 +18,9 @@ function Tasklist() {
 
   return (
     <>
-      <div className="container">
-        <div className="row">
-          <div className="col-12">
-            <h1>Issues</h1>
-            <AddTask />
-          </div>
-        </div>
+      <h1>Issues</h1>
+      <div className="d-flex container justify-content-start align-items-center">
+        <AddTask />
       </div>
       <div className="container tasklist">
         <ul>
