@@ -11,18 +11,7 @@ function SignUp () {
 
     const navigate = useNavigate();
 
-    async function createUser() {
-        // try {
-        //     const res = await axios.post(`${API_URL}/user/createUser`, {
-        //         username: username,
-        //         password: password
-        //     })
-        //     console.log(res.data);
-        // } catch (error) {
-        //     console.log(error);
-        // }
-        
-        
+    async function createUser() {       
         let newUser = {
             username: username,
             password: password,
