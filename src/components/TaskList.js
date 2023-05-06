@@ -42,7 +42,7 @@ function Tasklist() {
                       <div className="col-lg text-lg-center">
                         <span className={task.status}>{task.status}</span>
                       </div>
-                      <div className="col-lg-3 ">
+                      <div className="col-lg-3 subject">
                         <span>{task.subject}</span>
                       </div>
                       <div className="col-lg-2 text-lg-center">

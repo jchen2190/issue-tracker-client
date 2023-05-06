@@ -2,6 +2,10 @@ nav {
   border-bottom: 1px solid;
   margin-bottom: 20px;
 }
+.is-user button {
+  background: transparent;
+  border: none;
+}
 h1 {
   text-align: center;
 }
@@ -28,6 +32,13 @@ select, button.btn.btn-primary, button.btn.btn-danger {
 .tasklist ul li {
   padding: 10px;
   border-bottom: 1px solid rgb(215, 215, 215);
+}
+.subject span {
+  display: block;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .tasklist a {
   text-decoration: none;

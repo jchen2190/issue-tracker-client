@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { API_URL } from '../constants';
 import { useNavigate } from 'react-router-dom';
 
-function User() {
+function Profile() {
     const [username, setUsername] = useState("");
     const [authorize, setAuthorize] = useState(false);
 
@@ -73,4 +73,4 @@ function User() {
     )
 }
 
-export default User;
+export default Profile;

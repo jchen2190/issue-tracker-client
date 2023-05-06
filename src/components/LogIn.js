@@ -36,7 +36,7 @@ function LogIn() {
                     setSuccess(true);
                     setMessage(data.message); // User logged in successfully
                     setTimeout(() => {
-                        navigate("/user");
+                        navigate("/profile");
                     }, 1000)
                 }
             })

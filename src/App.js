@@ -3,8 +3,9 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 
-import User from './components/User';
-import UserContext from './components/UserContext';
+import Profile from './components/Profile';
+import IsUser from './components/IsUser';
+import LeftSidebar from './components/LeftSidebar'
 import Home from './Home';
 import Tasklist from "./components/Tasklist";
 import OneTask from './components/OneTask';
@@ -27,21 +28,24 @@ function App() {
                             <Nav.Link href="/tasklist">Tasks</Nav.Link>
                         </Nav>
                         <Navbar.Text>
-                            <UserContext />
+                            <IsUser />
                         </Navbar.Text>
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
-
-            <Routes>
-                <Route path="/" element={ <Home /> } />
-                <Route path="/tasklist" element={ <Tasklist /> } />
-                <Route path="/tasklist/:id" element={ <OneTask /> } />
-                <Route path="/login" element={ <LogIn /> } />
-                <Route path="/signup" element = { <SignUp /> } />
-                <Route path="/user" element={ <User /> } />
-                <Route path="*" element={ <NotFound /> } />
-            </Routes>
+            
+            <div className="main-content">
+                <LeftSidebar />
+                <Routes>
+                    <Route path="/" element={ <Home /> } />
+                    <Route path="/tasklist" element={ <Tasklist /> } />
+                    <Route path="/tasklist/:id" element={ <OneTask /> } />
+                    <Route path="/login" element={ <LogIn /> } />
+                    <Route path="/signup" element = { <SignUp /> } />
+                    <Route path="/profile" element={ <Profile /> } />
+                    <Route path="*" element={ <NotFound /> } />
+                </Routes>
+            </div>
         </div>
     );
 }
