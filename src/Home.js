@@ -5,8 +5,21 @@ function Home() {
     // const location = useLocation()
 
     return (
-        <div>
-            {/* <h1>Welcome {}</h1> */}
+        <div className="d-flex container justify-content-center align-items-center">
+            <div className="row">
+                <div className="col">
+                    Item 1
+                </div>
+                <div className="col">
+                    Item 2
+                </div>
+                <div className="col">
+                    Item 3
+                </div>
+                <div className="col">
+                    Item 4
+                </div>
+            </div>
         </div>
     );
 }

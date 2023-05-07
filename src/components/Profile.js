@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { API_URL } from '../constants';
+import { API_URL } from './constants';
 import { useNavigate } from 'react-router-dom';
 
 function Profile() {
@@ -39,7 +39,6 @@ function Profile() {
     }, []);
 
     const onLogOut = (e) => {
-        e.preventDefault();
         fetch(`${API_URL}/user/logOutUser`, {
             method: "post",
             credentials: 'include'
