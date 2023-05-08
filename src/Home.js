@@ -1,9 +1,7 @@
 import React from 'react';
-// import { useLocation, useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 function Home() {
-    // const location = useLocation()
-
     return (
         <div className="d-flex container justify-content-center align-items-center">
             <div className="row">
