@@ -77,7 +77,7 @@ function AddTask() {
                 { isEditing ? "- Cancel New Issue" : "+ Add New Issue" }
             </button>
             {isEditing ? 
-                <form onSubmit = {handleSubmit} className="addTaskForm">
+                <form onSubmit = {handleSubmit} className="addTaskForm rounded">
                     <div className="form-outline mb-2">
                         <label className="form-label">Status</label>
                         <select value={status} onChange={(e) => setStatus(e.target.value)}>

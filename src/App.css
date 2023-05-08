@@ -3,15 +3,21 @@ nav {
 }
 .is-user button {
   background: transparent;
-  border: none;
+  border: 1px solid transparent;
 }
-h1 {
-  text-align: center;
+.is-user button:active, .is-user button:hover {
+  border: 1px solid grey;
+  border-radius: 5px;
+}
+.homepage span, .homepage p {
+  font-weight: bold;
+}
+.homepage span {
+  font-size: 1.5rem;
 }
 .addTaskForm {
   background: #e1e1e1;
   padding: 20px;
-  border-radius: 5px;
 }
 .addTaskForm input, select, button {
   display: inline-block;

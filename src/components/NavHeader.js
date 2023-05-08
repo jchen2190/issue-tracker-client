@@ -29,7 +29,6 @@ function NavHeader() {
 
                 if (responseData.error) {
                     setAuthorize(false);
-                    console.log(responseData.message);
                 } else {
                     setUsername(responseData.payload.username)
                     setAuthorize(true);

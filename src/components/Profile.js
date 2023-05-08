@@ -56,11 +56,11 @@ function Profile() {
     }
 
     return (
-        <div>
+        <div className="d-flex justify-content-center ">
             { authorize ? 
-                <div>
-                    <h1>Welcome {username}</h1>
-                    <h2>This is issues assigned to you:</h2>
+                <div >
+                    <h1 >Welcome {username}</h1>
+                    <h2 >This is issues assigned to you:</h2>
                     <div>
                         {/* List of issues */}
                     </div>
