@@ -4,6 +4,7 @@ import { API_URL } from './constants';
 import AddTask from "./AddTask";
 import axios from 'axios';
 import { formatTime } from './formatTime';
+import Spinner from './Spinner/Spinner';
 
 function Tasklist() {
 
@@ -36,32 +37,32 @@ function Tasklist() {
                 <li key={task._id}>
                   <Link to={`/tasklist/${task._id}`} >
                     <div className="row">
-                      <div className="col-lg text-lg-center">
+                      <div className="col-lg">
                         <span>{index + 1}</span>
                       </div>
-                      <div className="col-lg text-lg-center">
+                      <div className="col-lg">
                         <span className={task.status}>{task.status}</span>
                       </div>
                       <div className="col-lg-3 subject">
                         <span>{task.subject}</span>
                       </div>
-                      <div className="col-lg-2 text-lg-center">
+                      <div className="col-lg-2">
                         <span>{task.author}</span>
                       </div>
-                      <div className="col-lg-2 text-lg-center">
+                      <div className="col-lg-2">
                         <span>{formatTime(task.created)}</span>
                       </div>
-                      <div className="col-lg text-lg-center">
+                      <div className="col-lg">
                         <span className={task.importance}>{task.importance}</span>
                       </div>
-                      <div className="col-lg text-lg-center">
+                      <div className="col-lg">
                         <span>{task.assignTo}</span>
                       </div>
                     </div>
                   </Link>
                 </li>
               ))
-            : <p> loading... </p> }
+            : <Spinner /> }
         </ul>
       </div>
     </>

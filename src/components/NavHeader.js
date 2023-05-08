@@ -74,7 +74,6 @@ function NavHeader() {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
-        
     );
 }
 

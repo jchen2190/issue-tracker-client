@@ -1,5 +1,9 @@
+body {
+  background-color: #F4F3F2
+}
 nav {
   border-bottom: 1px solid;
+  background-color: white;
 }
 .is-user button {
   background: transparent;
@@ -9,11 +13,31 @@ nav {
   border: 1px solid grey;
   border-radius: 5px;
 }
+.homeUsers {
+  background-color: #FFA000;
+}
+.homeIssues {
+  background-color: #1976D2;
+}
+.homeOpen {
+  background-color: #D32F2F;
+}
+.homeClosed {
+  background-color: #388E3C;
+}
 .homepage span, .homepage p {
   font-weight: bold;
 }
 .homepage span {
   font-size: 1.5rem;
+}
+.homeUpdates p {
+  margin: 0;
+  font-weight: normal;
+}
+.homeUpdates a {
+  color: black;
+  text-decoration: none;
 }
 .addTaskForm {
   background: #e1e1e1;

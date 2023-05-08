@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { API_URL } from './components/constants';
 import axios from 'axios';
-// import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { formatTime } from './components/formatTime';
+import Spinner from './components/Spinner/Spinner';
 
 function Home() {
     const [users, setUsers] = useState(0);
     const [tasks, setTasks] = useState([]);
-    // const [authorize, setAuthorize] = useState(false);
+    const [recentTask, setRecentTask] = useState([]);
     const [openTasks, setOpenTasks] = useState(0);
     const [closedTasks, setClosedTasks] = useState(0);
-
-    // const navigate = useNavigate();
 
     useEffect(() => {
         axios.get(`${ API_URL }/user/getAllUsers`)
@@ -22,6 +22,7 @@ function Home() {
             .then(async (res) => {
                 setTasks(res.data.payload);
                 countTasks(res.data.payload);
+                recentTasks(res.data.payload);
             }).catch((error)=> console.log(error) )
     }, [])
 
@@ -40,34 +41,60 @@ function Home() {
         setClosedTasks(countClosed);
     }
 
+    function recentTasks(tasks) {
+        let recentTask = [];
+        for (let i = tasks.length - 1 ; i > tasks.length - 6; i--) {
+            recentTask.push(tasks[i])
+        }
+        setRecentTask(recentTask);
+    }
+
     return (
         <div className="homepage container">
-            <p className="d-flex justify-content-start mt-4 p-2">Overview</p>
+            <p className="mt-4 p-2">Overview</p>
             <div className="justify-content-between row m-3">
-                <div className="col m-3 p-3 bg-secondary text-white rounded">
+                <div className="homeUsers col m-3 p-3 text-white rounded shadow">
                     <div className="row text-nowrap">
                         <span>{users}</span>
                         <p>Total Users</p>
                     </div>
                 </div>
-                <div className="col m-3 p-3 bg-primary text-white rounded">
+                <div className="homeIssues col m-3 p-3 text-white rounded shadow">
                     <div className="row text-nowrap">
                         <span>{tasks.length}</span>
                         <p>Total Issues</p>
                     </div>
                 </div>
-                <div className="col m-3 p-3 bg-success text-white rounded">
+                <div className="homeOpen col m-3 p-3 text-white rounded shadow">
                     <div className="row text-nowrap">
                         <span>{openTasks}</span>
                         <p>Open Issues</p>
                     </div>
                 </div>
-                <div className="col m-3 p-3 bg-danger text-white rounded">
+                <div className="homeClosed col m-3 p-3 text-white rounded shadow">
                     <div className="row text-nowrap">
                         <span>{closedTasks}</span>
                         <p>Closed Issues</p>
                     </div>
                 </div>
+            </div>
+            <p className="p-2">Recent Issues:</p>
+            <div className="homeUpdates">
+                { tasks.length > 0 ?
+                    recentTask.map((task) => (
+                        <Link to={`/tasklist/${task._id}`} >
+                            <div key={task._id} className="col mb-5 p-3 rounded shadow">
+                                <div className="row text-nowrap">
+                                    <p>Status: {task.status}</p>
+                                    <p className="text-truncate">Subject: {task.subject}</p>
+                                    <p className="text-truncate">Description: {task.description}</p>
+                                    <p>Created by <em>{task.author}</em> on {formatTime(task.created)}</p>
+                                </div>
+                            </div>
+                        </Link>
+                    ))
+                    : <Spinner />
+                }
             </div>
         </div>
     );
