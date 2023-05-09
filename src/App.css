@@ -43,7 +43,7 @@ nav {
   transform: translateY(0.9);
   transition: ease-in 1s;
 }
-.addTaskForm {
+.addTaskForm, .oneTaskForm {
   background: white;
 }
 .tasklist th, .tasklist td {

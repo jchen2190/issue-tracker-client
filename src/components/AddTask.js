@@ -79,65 +79,63 @@ function AddTask() {
                 </button>
             </div>
             {isEditing ? 
-                <form onSubmit = {handleSubmit} className="addTaskForm container rounded p-3">
-                    <div>
-                        {/* <div className="mb-3 row">
-                            <label className="form-label">Status</label>
-                            <select value={status} onChange={(e) => setStatus(e.target.value)}>
-                                <option value="open">Open</option>
-                                <option value="closed">Closed</option>
-                            </select>
-                        </div> */}
-                        <div className="mb-3 row">
-                            <label className="col-sm-2 col-form-label">Summary*</label>
-                            <div className="col-sm-10">
-                                <input className="form-control" value={subject} required onChange={(e) => setSubject(e.target.value)}/>
-                            </div>
+                <form onSubmit={handleSubmit} className="addTaskForm container rounded p-3">
+                    {/* <div className="mb-3 row">
+                        <label className="form-label">Status</label>
+                        <select value={status} onChange={(e) => setStatus(e.target.value)}>
+                            <option value="open">Open</option>
+                            <option value="closed">Closed</option>
+                        </select>
+                    </div> */}
+                    <div className="mb-3 row">
+                        <label className="col-sm-2 col-form-label">Summary*</label>
+                        <div className="col-sm-10">
+                            <input className="form-control" value={subject} required onChange={(e) => setSubject(e.target.value)}/>
                         </div>
-                        <div className="mb-3 row">
-                            <label className="col-sm-2 col-form-label">Description</label>
-                            <div className="col-sm-10">
-                                <textarea
-                                    className="form-control"
-                                    value={description}
-                                    required
-                                    onChange={(e) => setDescription(e.target.value)} />
-                            </div>
-                        </div>
-                        <div className="mb-3 row">
-                            <label className="col-sm-2 col-form-label">Assigned To</label>
-                            <div className="col-sm-4">
-                                <input className="form-control"
-                                    value={assignTo}
-                                    required
-                                    onChange={(e) => setAssignTo(e.target.value)} />
-                            </div>
-                            <button type="button" className="btn btn-primary col-3" onClick={() => setAssignTo(author)}>Assign to myself</button>
-                        </div>
-                        <div className="mb-3 row">
-                            <label className="col-sm-2 col-form-label">Due Date:</label>
-                            <div className="col-sm-4">
-                                <input
-                                    className="form-control"
-                                    value={dueDate.toISOString().slice(0, 10)}
-                                    type="date"
-                                    placeholder="Date Due"
-                                    autoComplete="off"
-                                    onChange={(e) => setDueDate(new Date(e.target.value))} />
-                            </div>
-                        </div>
-                        <div className="mb-3 row">
-                            <label className="col-sm-2 col-form-label">Priority</label>
-                            <div className="col-sm-3">
-                                <select className="form-select" value={importance} required onChange={(e) => setImportance(e.target.value)}>
-                                    <option value="low">Low</option>
-                                    <option value="medium">Medium</option>
-                                    <option value="high">High</option>
-                                </select>
-                            </div>
-                        </div>
-                        <button type="submit" className="btn btn-primary">Submit</button>
                     </div>
+                    <div className="mb-3 row">
+                        <label className="col-sm-2 col-form-label">Description</label>
+                        <div className="col-sm-10">
+                            <textarea
+                                className="form-control"
+                                value={description}
+                                required
+                                onChange={(e) => setDescription(e.target.value)} />
+                        </div>
+                    </div>
+                    <div className="mb-3 row">
+                        <label className="col-sm-2 col-form-label">Assigned To</label>
+                        <div className="col-sm-4">
+                            <input className="form-control"
+                                value={assignTo}
+                                required
+                                onChange={(e) => setAssignTo(e.target.value)} />
+                        </div>
+                        <button type="button" className="btn btn-primary col-3" onClick={() => setAssignTo(author)}>Assign to myself</button>
+                    </div>
+                    <div className="mb-3 row">
+                        <label className="col-sm-2 col-form-label">Due Date:</label>
+                        <div className="col-sm-4">
+                            <input
+                                className="form-control"
+                                value={dueDate.toISOString().slice(0, 10)}
+                                type="date"
+                                placeholder="Date Due"
+                                autoComplete="off"
+                                onChange={(e) => setDueDate(new Date(e.target.value))} />
+                        </div>
+                    </div>
+                    <div className="mb-3 row">
+                        <label className="col-sm-2 col-form-label">Priority</label>
+                        <div className="col-sm-3">
+                            <select className="form-select" value={importance} required onChange={(e) => setImportance(e.target.value)}>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" className="btn btn-primary">Submit</button>
                 </form>
                 : <></>
             }

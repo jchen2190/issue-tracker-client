@@ -32,6 +32,7 @@ function Tasklist() {
               <th scope="col">Date Created</th>
               <th scope="col">Priority</th>
               <th scope="col">Assign To</th>
+              <th scope="col">Due By</th>
             </tr>
           </thead>
           <tbody>
@@ -45,16 +46,12 @@ function Tasklist() {
                     <td>{formatTime(task.created)}</td>
                     <td><span className={task.importance}>{task.importance}</span></td>
                     <td>{task.assignTo}</td>
+                    <td>{formatTime(task.dueDate)}</td>
                   </tr>
                 ))
               :
                 <tr>
                   <th scope="row" className="p-3 text-center"><Spinner /></th>
-                  <td><Spinner /></td>
-                  <td><Spinner /></td>
-                  <td><Spinner /></td>
-                  <td><Spinner /></td>
-                  <td><Spinner /></td>
                   <td><Spinner /></td>
                 </tr>
               }

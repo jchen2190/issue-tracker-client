@@ -11,8 +11,11 @@ function OneTask() {
         subject: "",
         description: "",
         status: "",
-        importance: ""
+        importance: "",
+        dueDate: "",
     })
+    const [dueDate, setDueDate] = useState(new Date())
+
     const [isEditing, setIsEditing] = useState(false);
 
     useEffect(() => {
@@ -25,6 +28,7 @@ function OneTask() {
         }).then(async res => {
             let result = await res.json()
             setTask(result.payload);
+            setDueDate(result.payload.dueDate)
         })
     }, [id, isEditing])
 
@@ -41,7 +45,8 @@ function OneTask() {
             subject: task.subject,
             description: task.description,
             status: task.status,
-            importance: task.importance
+            importance: task.importance,
+            dueDate: dueDate
         }
 
         fetch(`${API_URL}/issue/updateTask/${task._id}`, {
@@ -80,56 +85,93 @@ function OneTask() {
     return (
         <div className="container onetask">
             <h2>Issue Detail</h2>
-            <form onSubmit={handleOnSubmit}>
-                <div>
-                    <div>Subject:
+            <form onSubmit={handleOnSubmit} className="oneTaskForm container rounded p-3 ">
+                <div className="mb-3 row">
+                    <label className="col-sm-2 col-form-label">Status</label>
+                    <div className="col-sm-3">
                         {
                             isEditing ?
-                            <input type="text" name="subject" value={task.subject} onChange={updateTask} />
-                            : <span>{task.subject}</span>
-                        }
-                    </div>
-                    <div>Description:
-                    {
-                        isEditing ?
-                        <input type="text" name="description" value={task.description} onChange={updateTask} />
-                        : <span>{task.description}</span>
-                    }
-                    </div>
-                    <div>Created On:
-                        { formatTime(task.created) }
-                    </div>
-                    <div>Status:
-                        {
-                            isEditing ?
-                            <select name="status" value={task.status} onChange={updateTask}>
+                            <select className="form-select" name="status" value={task.status} onChange={updateTask}>
                                 <option value="open">Open</option>
                                 <option value="closed">Closed</option>
                             </select>
-                            : <span>{task.status}</span>
+                            : <span className="text-uppercase">{task.status}</span>
                         }
                     </div>
-                    <div>Priority:
-                        {
-                            isEditing ?
-                            <select name="importance" value={task.importance} onChange={updateTask}>
-                                <option value="low">Low</option>
-                                <option value="medium">Medium</option>
-                                <option value="high">High</option>
-                            </select>
-                            : <span className={task.importance}>{task.importance}</span>
-                        }
-                    </div>
-                    {
-                        isEditing ? <button className="btn btn-warning"type="submit">Submit Edit</button>
-                        : <></>
-                    }
                 </div>
+                <div className="mb-3 row">
+                    <label className="col-sm-2 col-form-label">Summary</label>
+                    <div className="col-sm-10">
+                    {
+                        isEditing ?
+                        <input className="form-control" type="text" name="subject" value={task.subject} onChange={updateTask} />
+                        : <span className="align-self-center">{task.subject}</span>
+                    }
+                    </div>
+                </div>
+                <div className="mb-3 row">
+                    <label className="col-sm-2 col-form-label">Description</label>
+                    <div className="col-sm-10">
+                    {
+                        isEditing ?
+                        <input className="form-control" type="text" name="description" value={task.description} onChange={updateTask} />
+                        : <label className="align-middle">{task.description}</label>
+                    }
+                    </div>
+                </div>
+                <div className="mb-3 row">
+                    <label className="col-sm-2 col-form-label">Author</label>
+                    <div className="col-sm-10">
+                        <label className="align-middle">{task.author}</label>
+                    </div>
+                </div>
+                <div className="mb-3 row">
+                    <label className="col-sm-2 col-form-label">Created On:</label>
+                    <div className="col-sm-10">{ formatTime(task.created) }</div>
+                </div>
+                <div className="mb-3 row">
+                    <label className="col-sm-2 col-form-label">Priority</label>
+                    <div className="col-sm-3">
+                    {
+                        isEditing ?
+                        <select className="form-select" name="importance" value={task.importance} onChange={updateTask}>
+                            <option value="low">Low</option>
+                            <option value="medium">Medium</option>
+                            <option value="high">High</option>
+                        </select>
+                        : <span className={task.importance}>{task.importance}</span>
+                    }
+                    </div>
+                </div>
+                <div className="mb-3 row">
+                    <label className="col-sm-2 col-form-label">Date Due</label>
+                    <div className="col-sm-3">
+                    {/* {
+                        isEditing ?
+                        <input
+                                className="form-control"
+                                value={(dueDate.toISOString().slice(0, 10))}
+                                type="date"
+                                placeholder="Date Due"
+                                autoComplete="off"
+                                onChange={(e) => setDueDate(new Date(e.target.value))}
+                        />
+                        :
+                        task.dueDate && <span>{formatTime(new Date(task.dueDate))}</span>
+                    } */}
+                    <span>{formatTime(new Date(task.dueDate))}</span>
+                    </div>
+                </div>
+                {
+                    isEditing ? <button className="btn btn-warning mt-3"type="submit">Submit Change</button>
+                    : <></>
+                }
             </form>
-            <button className="btn btn-primary p-2 btn" onClick={toggleEditing}>
+
+            <button className="btn btn-primary p-2 m-3" onClick={toggleEditing}>
                 { isEditing ? "Stop Editing" : "Edit Issue" }
             </button>
-            <button className="btn btn-danger p-2 btn" onClick={handleDelete}>Delete Issue</button>
+            <button className="btn btn-danger p-2 m-3" onClick={handleDelete}>Delete Issue</button>
             {/* <form>
                 <label>Comments</label>
                 <div className="form-group">
