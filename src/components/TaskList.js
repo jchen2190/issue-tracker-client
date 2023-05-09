@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { API_URL } from './constants';
 import AddTask from "./AddTask";
 import axios from 'axios';
@@ -19,51 +18,48 @@ function Tasklist() {
 
   return (
     <>
-      <div className="d-flex container justify-content-center align-items-center">
-        <div className="row">
-          <div className="col-12">
-            <h1>Issues</h1>
-            <AddTask />
-          </div>
-        </div>
-      </div>
-      <div className="container tasklist">
-        <ul>
-          <div></div>
-        </ul>
-        <ul>
-          { tasks.length > 0 ?
-              tasks.map((task, index) => (
-                <li key={task._id}>
-                  <Link to={`/tasklist/${task._id}`} >
-                    <div className="row">
-                      <div className="col-lg">
-                        <span>{index + 1}</span>
-                      </div>
-                      <div className="col-lg">
-                        <span className={task.status}>{task.status}</span>
-                      </div>
-                      <div className="col-lg-3 subject">
-                        <span>{task.subject}</span>
-                      </div>
-                      <div className="col-lg-2">
-                        <span>{task.author}</span>
-                      </div>
-                      <div className="col-lg-2">
-                        <span>{formatTime(task.created)}</span>
-                      </div>
-                      <div className="col-lg">
-                        <span className={task.importance}>{task.importance}</span>
-                      </div>
-                      <div className="col-lg">
-                        <span>{task.assignTo}</span>
-                      </div>
-                    </div>
-                  </Link>
-                </li>
-              ))
-            : <Spinner /> }
-        </ul>
+      <div className="container align-items-center mt-4">
+        <h1>Issues</h1>
+        <AddTask />
+      
+        <table className="table table-sm table-striped table-hover tasklist container">
+          <thead>
+            <tr>
+              <th scope="col" className="text-center m-0">#</th>
+              <th scope="col">Status</th>
+              <th scope="col">Subject</th>
+              <th scope="col">Author</th>
+              <th scope="col">Date Created</th>
+              <th scope="col">Priority</th>
+              <th scope="col">Assign To</th>
+            </tr>
+          </thead>
+          <tbody>
+            { tasks.length > 0 ?
+                tasks.map((task, index) => (
+                  <tr key={task._id}>
+                    <th scope="row" className="p-3 text-center">{index}</th>
+                    <td><span className={task.status}>{task.status}</span></td>
+                    <td><a href={`/tasklist/${task._id}`} className="text-decoration-none">{task.subject}</a></td>
+                    <td>{task.author}</td>
+                    <td>{formatTime(task.created)}</td>
+                    <td><span className={task.importance}>{task.importance}</span></td>
+                    <td>{task.assignTo}</td>
+                  </tr>
+                ))
+              :
+                <tr>
+                  <th scope="row" className="p-3 text-center"><Spinner /></th>
+                  <td><Spinner /></td>
+                  <td><Spinner /></td>
+                  <td><Spinner /></td>
+                  <td><Spinner /></td>
+                  <td><Spinner /></td>
+                  <td><Spinner /></td>
+                </tr>
+              }
+          </tbody>
+        </table>
       </div>
     </>
   );

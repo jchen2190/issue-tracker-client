@@ -53,25 +53,25 @@ function Home() {
         <div className="homepage container">
             <p className="mt-4 p-2">Overview</p>
             <div className="justify-content-between row m-3">
-                <div className="homeUsers col m-3 p-3 text-white rounded shadow">
+                <div className="homeUsers col m-3 p-3 text-white rounded shadow border border-dark">
                     <div className="row text-nowrap">
                         <span>{users}</span>
                         <p>Total Users</p>
                     </div>
                 </div>
-                <div className="homeIssues col m-3 p-3 text-white rounded shadow">
+                <div className="homeIssues col m-3 p-3 text-white rounded shadow border border-dark">
                     <div className="row text-nowrap">
                         <span>{tasks.length}</span>
                         <p>Total Issues</p>
                     </div>
                 </div>
-                <div className="homeOpen col m-3 p-3 text-white rounded shadow">
+                <div className="homeOpen col m-3 p-3 text-white rounded shadow border border-dark">
                     <div className="row text-nowrap">
                         <span>{openTasks}</span>
                         <p>Open Issues</p>
                     </div>
                 </div>
-                <div className="homeClosed col m-3 p-3 text-white rounded shadow">
+                <div className="homeClosed col m-3 p-3 text-white rounded shadow border border-dark">
                     <div className="row text-nowrap">
                         <span>{closedTasks}</span>
                         <p>Closed Issues</p>
@@ -82,8 +82,8 @@ function Home() {
             <div className="homeUpdates">
                 { tasks.length > 0 ?
                     recentTask.map((task) => (
-                        <Link to={`/tasklist/${task._id}`} >
-                            <div key={task._id} className="col mb-5 p-3 rounded shadow">
+                        <Link to={`/tasklist/${task._id}`} key={task._id}>
+                            <div className="bg-light col mb-5 p-3 rounded shadow">
                                 <div className="row text-nowrap">
                                     <p>Status: {task.status}</p>
                                     <p className="text-truncate">Subject: {task.subject}</p>

@@ -4,7 +4,7 @@ import { API_URL } from './constants';
 function AddTask() {
     const [status, setStatus] = useState("open");
     const [subject, setSubject] = useState("");
-    const [author, setAuthor] = useState("anonymous");
+    const [author, setAuthor] = useState("guest");
     const [description, setDescription] = useState("");
     const [assignTo, setAssignTo] = useState("");
     const [dueDate, setDueDate] = useState(new Date())
@@ -72,12 +72,12 @@ function AddTask() {
     }
 
     return (
-        <div className="d-flex container justify-content-center align-items-center">
-            <button type="button" className="btn btn-primary mb-3 justify-content-center" onClick={toggleEditing}>
+        <div className="d-flex container align-items-center">
+            <button type="button" className="btn btn-primary mb-3 justify-content-center rounded-pill" onClick={toggleEditing}>
                 { isEditing ? "- Cancel New Issue" : "+ Add New Issue" }
             </button>
             {isEditing ? 
-                <form onSubmit = {handleSubmit} className="addTaskForm rounded">
+                <form onSubmit = {handleSubmit} className="addTaskForm rounded p-3">
                     <div className="form-outline mb-2">
                         <label className="form-label">Status</label>
                         <select value={status} onChange={(e) => setStatus(e.target.value)}>

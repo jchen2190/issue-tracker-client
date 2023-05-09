@@ -126,10 +126,10 @@ function OneTask() {
                     }
                 </div>
             </form>
-            <button className="btn btn-primary p-2 btn-lg" onClick={toggleEditing}>
+            <button className="btn btn-primary p-2 btn" onClick={toggleEditing}>
                 { isEditing ? "Stop Editing" : "Edit Issue" }
             </button>
-            <button className="btn btn-danger p-2 btn-lg" onClick={handleDelete}>Delete Issue</button>
+            <button className="btn btn-danger p-2 btn" onClick={handleDelete}>Delete Issue</button>
             {/* <form>
                 <label>Comments</label>
                 <div className="form-group">

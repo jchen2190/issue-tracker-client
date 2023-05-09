@@ -14,16 +14,16 @@ nav {
   border-radius: 5px;
 }
 .homeUsers {
-  background-color: #FFA000;
+  background-color: #F5A623;
 }
 .homeIssues {
-  background-color: #1976D2;
+  background-color: #248AFD;
 }
 .homeOpen {
-  background-color: #D32F2F;
+  background-color: #71C02B;
 }
 .homeClosed {
-  background-color: #388E3C;
+  background-color: #FF4747;
 }
 .homepage span, .homepage p {
   font-weight: bold;
@@ -39,47 +39,20 @@ nav {
   color: black;
   text-decoration: none;
 }
+.homeUpdates a:hover, .homeUpdates a:focus {
+  transform: translateY(0.9);
+  transition: ease-in 1s;
+}
 .addTaskForm {
-  background: #e1e1e1;
-  padding: 20px;
+  background: white;
 }
-.addTaskForm input, select, button {
-  display: inline-block;
-  margin: 10px 5px;
-  vertical-align: top;
-  padding: 2px;
-}
-select, button.btn.btn-primary, button.btn.btn-danger {
-  padding: 5px;
-  line-height: 1em;
-}
-.tasklist ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-.tasklist ul li {
-  padding: 10px;
-  border-bottom: 1px solid rgb(215, 215, 215);
-}
-.subject span {
-  display: block;
-  width: 100%;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.tasklist a {
-  text-decoration: none;
-  color: black;
-}
-.tasklist li:active, .tasklist li:hover {
-  background-color: lightgrey;
+.tasklist th, .tasklist td {
+  vertical-align: middle;
 }
 .low, .medium, .high, .open, .closed {
   text-transform: uppercase;
   font-size: .8rem;
-  padding: 3px;
+  padding: 5px;
   border-radius: 15px;
 }
 .low {
@@ -93,11 +66,11 @@ select, button.btn.btn-primary, button.btn.btn-danger {
 }
 .open {
   color: white;
-  background: darkgreen;
+  background: #71C02B;
 }
 .closed {
   color: white;
-  background: darkred;
+  background: #FF4747;
 }
 
 @media (width >= 768px) {
