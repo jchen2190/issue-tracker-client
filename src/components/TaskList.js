@@ -22,9 +22,9 @@ function Tasklist() {
         <h1>Issues</h1>
         <AddTask />
       
-        <table className="table table-sm table-striped table-hover tasklist container">
+        <table className="tasklist table table-md table-striped table-hover container border border-secondary">
           <thead>
-            <tr>
+            <tr className="border border-dark p-3">
               <th scope="col" className="text-center m-0">#</th>
               <th scope="col">Status</th>
               <th scope="col">Subject</th>
@@ -52,6 +52,12 @@ function Tasklist() {
               :
                 <tr>
                   <th scope="row" className="p-3 text-center"><Spinner /></th>
+                  <td><Spinner /></td>
+                  <td><Spinner /></td>
+                  <td><Spinner /></td>
+                  <td><Spinner /></td>
+                  <td><Spinner /></td>
+                  <td><Spinner /></td>
                   <td><Spinner /></td>
                 </tr>
               }

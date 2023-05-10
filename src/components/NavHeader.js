@@ -52,28 +52,30 @@ function NavHeader() {
 
 
     return (
-        <Navbar>
-            <Container>
-                <Navbar.Brand>IssueTracker</Navbar.Brand>
-                <Navbar.Toggle aria-controls="basic-navbar-nav" />
-                <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="me-auto">
-                        <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/tasklist">Issues</Nav.Link>
-                    </Nav>
-                    <Navbar.Text>
-                        <div className="is-user">
-                            {
-                                authorize ?
-                                <button onClick={GoToProfile}>Welcome {username}</button>
-                                :
-                                <button onClick={SignIn}>Sign In</button>
-                            }
-                        </div>
-                    </Navbar.Text>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+        <div className="navheader">
+            <Navbar>
+                <Container>
+                    <Navbar.Brand href="/">IssueTracker</Navbar.Brand>
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Collapse id="basic-navbar-nav">
+                        <Nav className="me-auto">
+                            {/* <Nav.Link href="/">Home</Nav.Link> */}
+                            {/* <Nav.Link href="/tasklist">Issues</Nav.Link> */}
+                        </Nav>
+                        <Navbar.Text>
+                            <div className="is-user">
+                                {
+                                    authorize ?
+                                    <button className="btn" onClick={GoToProfile}>Welcome {username}</button>
+                                    :
+                                    <button className="btn" onClick={SignIn}>Sign In</button>
+                                }
+                            </div>
+                        </Navbar.Text>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
+        </div>
     );
 }
 

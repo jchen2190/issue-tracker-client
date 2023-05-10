@@ -5,6 +5,11 @@ import { Link } from 'react-router-dom';
 import { formatTime } from './components/formatTime';
 import Spinner from './components/Spinner/Spinner';
 
+import usersIcon from './images/multiple-users-silhouette.png'
+import issueIcon from './images/calendar.svg';
+import openIcon from './images/card-text.svg';
+import closedIcon from './images/checkboard.svg';
+
 function Home() {
     const [users, setUsers] = useState(0);
     const [tasks, setTasks] = useState([]);
@@ -57,24 +62,28 @@ function Home() {
                     <div className="row text-nowrap">
                         <span>{users}</span>
                         <p>Total Users</p>
+                        <img src={usersIcon} alt="users" />
                     </div>
                 </div>
                 <div className="homeIssues col m-3 p-3 text-white rounded shadow border border-dark">
                     <div className="row text-nowrap">
                         <span>{tasks.length}</span>
                         <p>Total Issues</p>
+                        <img src={issueIcon} alt="issues"/>
                     </div>
                 </div>
                 <div className="homeOpen col m-3 p-3 text-white rounded shadow border border-dark">
                     <div className="row text-nowrap">
                         <span>{openTasks}</span>
                         <p>Open Issues</p>
+                        <img src={openIcon} alt="open issues"/>
                     </div>
                 </div>
                 <div className="homeClosed col m-3 p-3 text-white rounded shadow border border-dark">
                     <div className="row text-nowrap">
                         <span>{closedTasks}</span>
                         <p>Closed Issues</p>
+                        <img src={closedIcon} alt="closed issues"/>
                     </div>
                 </div>
             </div>

@@ -83,7 +83,7 @@ function OneTask() {
     }
 
     return (
-        <div className="container onetask">
+        <div className="container onetask mt-5">
             <h2>Issue Detail</h2>
             <form onSubmit={handleOnSubmit} className="oneTaskForm container rounded p-3 ">
                 <div className="mb-3 row">
@@ -163,7 +163,7 @@ function OneTask() {
                     </div>
                 </div>
                 {
-                    isEditing ? <button className="btn btn-warning mt-3"type="submit">Submit Change</button>
+                    isEditing ? <button className="btn btn-warning mt-3"type="submit">Submit Changes</button>
                     : <></>
                 }
             </form>

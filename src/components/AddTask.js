@@ -72,14 +72,14 @@ function AddTask() {
     }
 
     return (
-        <div className="d-flex container align-items-center row">
+        <div className="d-flex container align-items-center row mb-4">
             <div>
                 <button type="button" className="btn btn-primary mb-3 justify-content-center rounded-pill" onClick={toggleEditing}>
                     { isEditing ? "- Cancel New Issue" : "+ Add New Issue" }
                 </button>
             </div>
             {isEditing ? 
-                <form onSubmit={handleSubmit} className="addTaskForm container rounded p-3">
+                <form onSubmit={handleSubmit} className="addTaskForm container rounded p-3 border border-secondary">
                     {/* <div className="mb-3 row">
                         <label className="form-label">Status</label>
                         <select value={status} onChange={(e) => setStatus(e.target.value)}>

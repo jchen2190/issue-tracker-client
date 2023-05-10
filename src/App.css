@@ -1,9 +1,36 @@
 body {
   background-color: #F4F3F2
 }
-nav {
-  border-bottom: 1px solid;
+.navheader {
+  border-bottom: 1px solid rgb(208, 208, 208);
+  background-color: #483700;
+}
+.navheader button, .navheader a {
+  color: white;
+}
+.navbar-brand:active {
+  color: #FFC100;
+}
+.navheader button:hover, .navheader a:hover
+.navheader button:active, .navheader a:active {
+  color: #FFC100;
+  border: 1px solid white;
+}
+.navsidebar {
   background-color: white;
+  border-right: rgb(208, 208, 208) 1px solid;
+}
+.navsidebar span {
+  text-transform: uppercase;
+  font-size: .77rem;
+  font-weight: bold;
+}
+.navsidebar a {
+  color: black;
+  font-weight: bold;
+}
+.navsidebar img{
+  width: 25px;
 }
 .is-user button {
   background: transparent;
@@ -12,6 +39,9 @@ nav {
 .is-user button:active, .is-user button:hover {
   border: 1px solid grey;
   border-radius: 5px;
+}
+.homeUsers, .homeIssues, .homeOpen, .homeClosed {
+  text-shadow: -1px -1px 0 rgb(30, 30, 30), 1px -1px 0 rgb(30, 30, 30), -1px 1px 0 rgb(30, 30, 30), 1px 1px 0 rgb(30, 30, 30);
 }
 .homeUsers {
   background-color: #F5A623;
@@ -30,6 +60,10 @@ nav {
 }
 .homepage span {
   font-size: 1.5rem;
+}
+.homepage img {
+  width: 95px;
+  filter: contrast(25%);
 }
 .homeUpdates p {
   margin: 0;
