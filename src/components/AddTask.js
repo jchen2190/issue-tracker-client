@@ -88,7 +88,7 @@ function AddTask() {
                         </select>
                     </div> */}
                     <div className="mb-3 row">
-                        <label className="col-sm-2 col-form-label">Summary*</label>
+                        <label className="col-sm-2 col-form-label">Summary<span style={{color: "red"}}>*</span></label>
                         <div className="col-sm-10">
                             <input className="form-control" value={subject} required onChange={(e) => setSubject(e.target.value)}/>
                         </div>

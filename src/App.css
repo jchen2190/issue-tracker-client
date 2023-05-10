@@ -48,6 +48,10 @@ body {
 .homeUsers, .homeIssues, .homeOpen, .homeClosed {
   text-shadow: -1px -1px 0 rgb(30, 30, 30), 1px -1px 0 rgb(30, 30, 30), -1px 1px 0 rgb(30, 30, 30), 1px 1px 0 rgb(30, 30, 30);
 }
+.homeUsers p, .homeIssues p, .homeOpen p, .homeClosed p,
+.homeUsers span, .homeIssues span, .homeOpen span, .homeClosed span {
+  font-size: 1.5rem;
+}
 .homeUsers {
   background-color: #F5A623;
 }
@@ -63,12 +67,9 @@ body {
 .homepage span, .homepage p {
   font-weight: bold;
 }
-.homepage span {
-  font-size: 1.5rem;
-}
 .homepage img {
   width: 95px;
-  filter: contrast(25%);
+  filter: invert(100%);
 }
 .homeUpdates p {
   margin: 0;

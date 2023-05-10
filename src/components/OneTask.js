@@ -12,7 +12,6 @@ function OneTask() {
         description: "",
         status: "",
         importance: "",
-        dueDate: "",
         assignTo: "",
     })
     const [dueDate, setDueDate] = useState(new Date())
@@ -184,7 +183,7 @@ function OneTask() {
                 { isEditing ? "Stop Editing" : "Edit Issue" }
             </button>
 
-            {/* hide delete button to keep data */}
+            {/* d-none hide delete button, keep abusers from deleting data */}
             <button className="btn btn-danger p-2 m-3 d-none" onClick={handleDelete} disabled>Delete Issue</button>
 
             {/* <form>

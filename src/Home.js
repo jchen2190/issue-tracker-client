@@ -58,28 +58,28 @@ function Home() {
         <div className="homepage container">
             <p className="mt-4 p-2">Overview</p>
             <div className="justify-content-between row m-3">
-                <div className="homeUsers col m-3 p-3 text-white rounded shadow border border-dark">
+                <div className="homeUsers col m-3 p-3 text-white rounded shadow border">
                     <div className="row text-nowrap">
                         <span>{users}</span>
                         <p>Total Users</p>
                         <img src={usersIcon} alt="users" />
                     </div>
                 </div>
-                <div className="homeIssues col m-3 p-3 text-white rounded shadow border border-dark">
+                <div className="homeIssues col m-3 p-3 text-white rounded shadow border">
                     <div className="row text-nowrap">
                         <span>{tasks.length}</span>
                         <p>Total Issues</p>
                         <img src={issueIcon} alt="issues"/>
                     </div>
                 </div>
-                <div className="homeOpen col m-3 p-3 text-white rounded shadow border border-dark">
+                <div className="homeOpen col m-3 p-3 text-white rounded shadow border">
                     <div className="row text-nowrap">
                         <span>{openTasks}</span>
                         <p>Open Issues</p>
                         <img src={openIcon} alt="open issues"/>
                     </div>
                 </div>
-                <div className="homeClosed col m-3 p-3 text-white rounded shadow border border-dark">
+                <div className="homeClosed col m-3 p-3 text-white rounded shadow border">
                     <div className="row text-nowrap">
                         <span>{closedTasks}</span>
                         <p>Closed Issues</p>
@@ -92,12 +92,22 @@ function Home() {
                 { tasks.length > 0 ?
                     recentTask.map((task) => (
                         <Link to={`/tasklist/${task._id}`} key={task._id}>
-                            <div className="bg-light col mb-5 p-3 rounded shadow">
+                            <div className="bg-light col mb-4 p-3 rounded shadow">
                                 <div className="row text-nowrap">
-                                    <p>Status: {task.status}</p>
-                                    <p className="text-truncate">Subject: {task.subject}</p>
-                                    <p className="text-truncate">Description: {task.description}</p>
-                                    <p>Created by <em>{task.author}</em> on {formatTime(task.created)}</p>
+                                    <div className="col-4 col-md-3 col-lg-2">Status:</div>
+                                    <div className="col-8 col-md-9 col-lg-10"><span className={task.status}>{task.status}</span></div>
+                                </div>
+                                <div className="row text-nowrap">
+                                    <div className="col-4 col-md-3 col-lg-2">Subject:</div>
+                                    <p className="col-8  col-md-9 col-lg-10 text-truncate">{task.subject}</p>
+                                </div>
+                                <div className="row text-nowrap">
+                                    <div className="col-4 col-md-3 col-lg-2">Description:</div>
+                                    <p className="col-8  col-md-9 col-lg-10 text-truncate">{task.description}</p>
+                                </div>
+                                <div className="row text-nowrap">
+                                    <div className="col-4 col-md-3 col-lg-2">Created by:</div>
+                                    <p className="col-8 col-md-9 col-lg-10"><em>{task.author}</em> on {formatTime(task.created)}</p>
                                 </div>
                             </div>
                         </Link>
