@@ -10,8 +10,8 @@ function NavSidebar() {
     return (
       <Navbar>
         <Container>
-          <Navbar.Toggle aria-controls="basic-navbar-nav " />
-          <Navbar.Collapse id="basic-navbar-nav ">
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="flex-column my-3">
               <span className="m-3">Navigation</span>
               <li className="d-flex mx-4">
@@ -19,8 +19,8 @@ function NavSidebar() {
                 <Nav.Link href="/">Home</Nav.Link>
               </li>
               <li className="d-flex mx-4">
-                <img src={taskIcon} alt="tasks" />
-                <Nav.Link href="/tasklist">Tasks</Nav.Link>
+                <img src={taskIcon} alt="issues" />
+                <Nav.Link href="/tasklist">Issues</Nav.Link>
               </li>
               <span className="m-3">Account</span>
               <li className="d-flex mx-4">

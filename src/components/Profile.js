@@ -66,7 +66,7 @@ function Profile() {
                     </div>
                     <button onClick={onLogOut}> Log Out </button>
                 </div>
-                : <div>Log in to see your profile</div>
+                : <h4 className="mt-5"><a href="/login">Log in</a> to see your profile</h4>
             }
         </div>
     )

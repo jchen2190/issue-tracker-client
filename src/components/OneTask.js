@@ -13,6 +13,7 @@ function OneTask() {
         status: "",
         importance: "",
         dueDate: "",
+        assignTo: "",
     })
     const [dueDate, setDueDate] = useState(new Date())
 
@@ -46,7 +47,8 @@ function OneTask() {
             description: task.description,
             status: task.status,
             importance: task.importance,
-            dueDate: dueDate
+            dueDate: dueDate,
+            assignTo: task.assignTo,
         }
 
         fetch(`${API_URL}/issue/updateTask/${task._id}`, {
@@ -114,7 +116,7 @@ function OneTask() {
                     <div className="col-sm-10">
                     {
                         isEditing ?
-                        <input className="form-control" type="text" name="description" value={task.description} onChange={updateTask} />
+                        <textarea className="form-control" type="text" rows="3" name="description" value={task.description} onChange={updateTask} />
                         : <label className="align-middle">{task.description}</label>
                     }
                     </div>
@@ -162,6 +164,16 @@ function OneTask() {
                     <span>{formatTime(new Date(task.dueDate))}</span>
                     </div>
                 </div>
+                <div className="mb-3 row">
+                    <label className="col-sm-2 col-form-label">Assigned To</label>
+                    <div className="col-sm-10">
+                    {
+                        isEditing ?
+                        <input className="form-control" type="text" name="assignTo" value={task.assignTo} onChange={updateTask} />
+                        : <label className="align-middle">{task.assignTo}</label>
+                    }
+                    </div>
+                </div>
                 {
                     isEditing ? <button className="btn btn-warning mt-3"type="submit">Submit Changes</button>
                     : <></>
@@ -171,7 +183,10 @@ function OneTask() {
             <button className="btn btn-primary p-2 m-3" onClick={toggleEditing}>
                 { isEditing ? "Stop Editing" : "Edit Issue" }
             </button>
-            <button className="btn btn-danger p-2 m-3" onClick={handleDelete}>Delete Issue</button>
+
+            {/* hide delete button to keep data */}
+            <button className="btn btn-danger p-2 m-3 d-none" onClick={handleDelete} disabled>Delete Issue</button>
+
             {/* <form>
                 <label>Comments</label>
                 <div className="form-group">

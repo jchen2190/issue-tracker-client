@@ -45,7 +45,7 @@ function SignUp () {
     }
 
     return (
-        <div className="d-flex container justify-content-center align-items-center">
+        <div className="d-flex container justify-content-center align-items-center mt-5">
             <form onSubmit={handleSubmit}>
                 <h3 className="d-flex justify-content-center">IssueTracker</h3>
                 <p className="d-flex justify-content-center">Register</p>
@@ -65,7 +65,7 @@ function SignUp () {
                     error && <p style={{color:'red'}}>{error}</p>
                 }
                 <div className="d-flex justify-content-center align-items-center">
-                    <p className="m-0">Already have an account?</p>
+                    <p className="m-0 p-2">Already have an account?</p>
                     <button className="btn btn-outline-primary" onClick={handleClick}>Login here.</button>
                 </div>
             </form>

@@ -1,5 +1,8 @@
+html {
+  box-sizing: border-box;
+}
 body {
-  background-color: #F4F3F2
+  background-color: #F4F3F2;
 }
 .navheader {
   border-bottom: 1px solid rgb(208, 208, 208);
@@ -8,17 +11,19 @@ body {
 .navheader button, .navheader a {
   color: white;
 }
-.navbar-brand:active {
-  color: #FFC100;
+.navheader .brand a{
+  text-decoration: none;
+  font-size: 1.5rem;
 }
-.navheader button:hover, .navheader a:hover
+.navheader button:hover, .navheader a:hover,
 .navheader button:active, .navheader a:active {
   color: #FFC100;
-  border: 1px solid white;
 }
 .navsidebar {
   background-color: white;
   border-right: rgb(208, 208, 208) 1px solid;
+  max-width: 200px;
+  padding-bottom: 70%;
 }
 .navsidebar span {
   text-transform: uppercase;

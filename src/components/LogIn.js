@@ -54,7 +54,7 @@ function LogIn() {
     }
 
     return (
-        <div className="d-flex container justify-content-center align-items-center">
+        <div className="d-flex container justify-content-center align-items-center mt-5">
             <form onSubmit={handleSubmit}>
                 <h3 className="d-flex justify-content-center">IssueTracker</h3>
                 <p className="d-flex justify-content-center">Please login to your account</p>
@@ -67,15 +67,19 @@ function LogIn() {
                     <input value={password} type="password" name="password" className="form-control" onChange={(e)=>setPassword(e.target.value)}/>
                 </div>
                 {
-                    success ? message : <button type="submit" className="btn btn-primary btn-lg w-100 mb-4">Log In</button>
+                    success ? message :
+                    <>
+                        <button type="submit" className="btn btn-primary btn-lg w-100 mb-4">Log In</button>
+                        <div className="d-flex justify-content-center align-items-center">
+                            <p className="m-0 p-2">Don't have an account?</p>
+                            <button className="btn btn-outline-primary" onClick={handleClick}>Register</button>
+                        </div>
+                    </>
                 }
                 {
                     error ? message : <></>
                 }
-                <div className="d-flex justify-content-center align-items-center">
-                    <p className="m-0">Don't have an account?</p>
-                    <button className="btn btn-outline-primary" onClick={handleClick}>Register</button>
-                </div>
+                
             </form>
         </div>
     );

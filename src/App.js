@@ -16,7 +16,7 @@ function App() {
         <div className="app row">
             <NavHeader />
             
-            <div className="col-2 navsidebar">
+            <div className="col-2 navsidebar d-none d-sm-none d-md-none d-lg-block">
                 <NavSidebar />
             </div>
             <div className="col-10">

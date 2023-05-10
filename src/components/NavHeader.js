@@ -55,12 +55,12 @@ function NavHeader() {
         <div className="navheader">
             <Navbar>
                 <Container>
-                    <Navbar.Brand href="/">IssueTracker</Navbar.Brand>
+                    <div className="brand"><a className="btn" href="/">IssueTracker</a></div>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            {/* <Nav.Link href="/">Home</Nav.Link> */}
-                            {/* <Nav.Link href="/tasklist">Issues</Nav.Link> */}
+                            <Nav.Link href="/" className="d-md-block d-lg-none">Home</Nav.Link>
+                            <Nav.Link href="/tasklist" className="d-md-block d-lg-none">Issues</Nav.Link>
                         </Nav>
                         <Navbar.Text>
                             <div className="is-user">

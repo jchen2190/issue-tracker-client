@@ -72,7 +72,7 @@ function AddTask() {
     }
 
     return (
-        <div className="d-flex container align-items-center row mb-4">
+        <div className="d-flex container align-items-center row my-4">
             <div>
                 <button type="button" className="btn btn-primary mb-3 justify-content-center rounded-pill" onClick={toggleEditing}>
                     { isEditing ? "- Cancel New Issue" : "+ Add New Issue" }
@@ -99,6 +99,7 @@ function AddTask() {
                             <textarea
                                 className="form-control"
                                 value={description}
+                                rows="3"
                                 required
                                 onChange={(e) => setDescription(e.target.value)} />
                         </div>
