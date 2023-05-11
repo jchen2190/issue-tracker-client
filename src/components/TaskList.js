@@ -22,7 +22,7 @@ function Tasklist() {
         <h1>Issues</h1>
         <AddTask />
       
-        <table className="tasklist table table-md table-striped table-hover container border border-secondary bg-light">
+        <table className="tasklist table table-sm table-striped table-hover container border border-secondary bg-light">
           <thead>
             <tr className="border border-dark p-3">
               <th scope="col" className="text-center m-0">#</th>

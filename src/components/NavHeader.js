@@ -1,15 +1,44 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { API_URL } from './constants';
 import { useNavigate } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
 
-function NavHeader(props) {
-    const user = {
-        username: props.username,
-        authorize: props.authorize,
-    }
+function NavHeader() {
+    const [username, setUsername] = useState("");
+    const [authorize, setAuthorize] = useState(false);
+
     const navigate = useNavigate();
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const response = await fetch(`${API_URL}/user/userData`, {
+                    method: 'post',
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json",
+                        "Access-Control-Allow-Origin": "*",
+                        "Access-Control-Allow-Credentials": "true"
+                    },
+                    credentials: 'include' // enable cookies
+                });
+
+                const responseData = await response.json();
+
+                if (responseData.error) {
+                    setAuthorize(false);
+                } else {
+                    setUsername(responseData.payload.username)
+                    setAuthorize(true);
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        fetchData();
+    }, []);
 
     function GoToProfile(e) {
         e.preventDefault();
@@ -35,8 +64,8 @@ function NavHeader(props) {
                         <Navbar.Text>
                             <div className="is-user">
                                 {
-                                    user.authorize ?
-                                    <button className="btn" onClick={GoToProfile}>Welcome {user.username}</button>
+                                    authorize ?
+                                    <button className="btn" onClick={GoToProfile}>Welcome {username}</button>
                                     :
                                     <button className="btn" onClick={SignIn}>Sign In</button>
                                 }
