@@ -25,8 +25,7 @@ npm install
 Dependencies that will be installed for the client-side:
 
 - axios
-- bootstrap
-- react-bootstrap <!-- npm install react-bootstrap bootstrap -->
+- react-bootstrap
 - react-router-dom
 
 Run the project when is the server is connected:

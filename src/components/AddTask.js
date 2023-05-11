@@ -67,7 +67,7 @@ function AddTask() {
         isEditing ? setIsEditing(false) : setIsEditing(true);
     }
 
-    function handleSubmit(e) {
+    function handleSubmit() {
         postTask();
     }
 

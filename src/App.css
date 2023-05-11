@@ -5,11 +5,11 @@ body {
   background-color: #F4F3F2;
 }
 .navheader {
-  border-bottom: 1px solid rgb(208, 208, 208);
-  background-color: #483700;
+  border-bottom: 1px solid rgb(0, 0, 0);
+  background-color: white;
 }
 .navheader button, .navheader a {
-  color: white;
+  color: black;
 }
 .navheader .brand a{
   text-decoration: none;

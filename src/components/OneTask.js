@@ -183,8 +183,7 @@ function OneTask() {
                 { isEditing ? "Stop Editing" : "Edit Issue" }
             </button>
 
-            {/* d-none hide delete button, keep abusers from deleting data */}
-            <button className="btn btn-danger p-2 m-3 d-none" onClick={handleDelete} disabled>Delete Issue</button>
+            <button className="btn btn-danger p-2 m-3" onClick={handleDelete}>Delete Issue</button>
 
             {/* <form>
                 <label>Comments</label>
