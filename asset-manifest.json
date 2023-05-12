@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/issue-tracker-client/static/css/main.219926eb.css",
-    "main.js": "/issue-tracker-client/static/js/main.a8962d39.js",
+    "main.js": "/issue-tracker-client/static/js/main.ec2f9594.js",
     "static/js/787.3376d4ba.chunk.js": "/issue-tracker-client/static/js/787.3376d4ba.chunk.js",
     "static/media/table-sort.svg": "/issue-tracker-client/static/media/table-sort.f133eea36ee75c2c1223128e0a25fb93.svg",
     "static/media/home2.svg": "/issue-tracker-client/static/media/home2.42fc05c0b29311348023f686b9207696.svg",
@@ -12,11 +12,11 @@
     "static/media/person.svg": "/issue-tracker-client/static/media/person.431b0119278a762b7985d2549fbe862e.svg",
     "static/media/card-text.svg": "/issue-tracker-client/static/media/card-text.9d103fec00f9750d834acd099677410e.svg",
     "main.219926eb.css.map": "/issue-tracker-client/static/css/main.219926eb.css.map",
-    "main.a8962d39.js.map": "/issue-tracker-client/static/js/main.a8962d39.js.map",
+    "main.ec2f9594.js.map": "/issue-tracker-client/static/js/main.ec2f9594.js.map",
     "787.3376d4ba.chunk.js.map": "/issue-tracker-client/static/js/787.3376d4ba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.219926eb.css",
-    "static/js/main.a8962d39.js"
+    "static/js/main.ec2f9594.js"
   ]
 }
