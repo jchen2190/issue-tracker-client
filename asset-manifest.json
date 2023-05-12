@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/react-gh-pages/static/css/main.219926eb.css",
+    "main.js": "/react-gh-pages/static/js/main.3facc401.js",
+    "static/js/787.3376d4ba.chunk.js": "/react-gh-pages/static/js/787.3376d4ba.chunk.js",
+    "static/media/table-sort.svg": "/react-gh-pages/static/media/table-sort.f133eea36ee75c2c1223128e0a25fb93.svg",
+    "static/media/home2.svg": "/react-gh-pages/static/media/home2.42fc05c0b29311348023f686b9207696.svg",
+    "static/media/calendar.svg": "/react-gh-pages/static/media/calendar.0fbb9ebc7a53a609cb4398e8e6b241b3.svg",
+    "static/media/layers-two.svg": "/react-gh-pages/static/media/layers-two.bb9edcb7c88ab953456c944bd72be81e.svg",
+    "index.html": "/react-gh-pages/index.html",
+    "static/media/checkboard.svg": "/react-gh-pages/static/media/checkboard.f80e193c799318d839e0227281ba040d.svg",
+    "static/media/person.svg": "/react-gh-pages/static/media/person.431b0119278a762b7985d2549fbe862e.svg",
+    "static/media/card-text.svg": "/react-gh-pages/static/media/card-text.9d103fec00f9750d834acd099677410e.svg",
+    "main.219926eb.css.map": "/react-gh-pages/static/css/main.219926eb.css.map",
+    "main.3facc401.js.map": "/react-gh-pages/static/js/main.3facc401.js.map",
+    "787.3376d4ba.chunk.js.map": "/react-gh-pages/static/js/787.3376d4ba.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.219926eb.css",
+    "static/js/main.3facc401.js"
+  ]
+}
