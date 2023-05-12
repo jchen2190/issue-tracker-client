@@ -107,7 +107,8 @@ function AddTask() {
                     <div className="mb-3 row">
                         <label className="col-sm-2 col-form-label">Assigned To</label>
                         <div className="col-sm-4">
-                            <input className="form-control"
+                            <input
+                                className="form-control"
                                 value={assignTo}
                                 required
                                 onChange={(e) => setAssignTo(e.target.value)} />

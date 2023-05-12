@@ -38,7 +38,7 @@ function NavHeader() {
             }
         }
         fetchData();
-    }, []);
+    }, [authorize]);
 
     function GoToProfile(e) {
         e.preventDefault();

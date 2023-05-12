@@ -35,7 +35,7 @@ function Profile() {
             }
         }
         fetchData();
-    }, []);
+    }, [authorize]);
 
     const onLogOut = (e) => {
         fetch(`${API_URL}/user/logOutUser`, {
@@ -59,11 +59,11 @@ function Profile() {
             { authorize ? 
                 <div >
                     <h1 >Welcome {username}</h1>
-                    <h2 >This is issues assigned to you:</h2>
+                    {/* <h2 >This is issues assigned to you:</h2> */}
                     <div>
                         {/* List of issues */}
                     </div>
-                    <button onClick={onLogOut}> Log Out </button>
+                    <button onClick={onLogOut} className="btn btn-outline-primary"> Log Out </button>
                 </div>
                 : <h4 className="mt-5"><a href="/login">Log in</a> to see your profile</h4>
             }

@@ -10,6 +10,7 @@ body {
 }
 .navheader button, .navheader a {
   color: black;
+  font-weight: 800;
 }
 .navheader .brand a{
   text-decoration: none;
@@ -17,7 +18,7 @@ body {
 }
 .navheader button:hover, .navheader a:hover,
 .navheader button:active, .navheader a:active {
-  color: #FFC100;
+  color: darkblue;
 }
 .navsidebar {
   background-color: white;
@@ -27,8 +28,8 @@ body {
 }
 .navsidebar span {
   text-transform: uppercase;
-  font-size: .77rem;
-  font-weight: bold;
+  font-size: .75rem;
+  font-weight: 900;
 }
 .navsidebar a {
   color: black;
@@ -88,6 +89,19 @@ body {
 }
 .tasklist th, .tasklist td {
   vertical-align: middle;
+}
+.tasklist th {
+  white-space: nowrap; /* prevent image wrap in header */
+}
+.tasklist thead img {
+  width: 20px;
+  height: 20px;
+  filter: contrast(30%);
+  margin-left: 5px;
+}
+.tasklist thead th:hover, .tasklist thead th:active {
+  background-color: lightgrey;
+  cursor: pointer;
 }
 .low, .medium, .high, .open, .closed {
   text-transform: uppercase;

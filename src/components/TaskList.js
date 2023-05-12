@@ -4,6 +4,7 @@ import AddTask from "./AddTask";
 import axios from 'axios';
 import { formatTime } from './formatTime';
 import Spinner from './Spinner/Spinner';
+import tableSortIcon from '../images/table-sort.svg'
 
 function Tasklist() {
   const [tasks, setTasks] = useState([]);
@@ -11,7 +12,7 @@ function Tasklist() {
   const [sortOrder, setSortOrder] = useState("asc");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
+  const [pageSize] = useState(10);
 
   useEffect(() => {
     axios.get(`${ API_URL }/issue/tasklist`)
@@ -48,10 +49,14 @@ function Tasklist() {
   
   function getPageData(data, currentPage, pageSize) {
     const startIndex = (currentPage - 1) * pageSize;
-    const endIndex = startIndex + pageSize;
-  
+    let endIndex = startIndex + pageSize;
+    const totalItems = data.length;
+
+    if (endIndex > totalItems) {
+      endIndex = totalItems;
+    }
+
     const pageData = data.slice(startIndex, endIndex);
-  
     return pageData;
   }
 
@@ -68,13 +73,13 @@ function Tasklist() {
           <thead>
             <tr className="border border-dark p-3">
               <th onClick={() => handleSort('taskNo')} className="text-center m-0">#</th>
-              <th onClick={() => handleSort('status')}>Status</th>
-              <th onClick={() => handleSort('subject')}>Subject</th>
-              <th onClick={() => handleSort('author')}>Author</th>
-              <th onClick={() => handleSort('created')}>Date Created</th>
-              <th onClick={() => handleSort('priority')}>Priority</th>
-              <th onClick={() => handleSort('assignTo')}>Assign To</th>
-              <th onClick={() => handleSort('dueDate')}>Due By</th>
+              <th onClick={() => handleSort('status')}>Status <img src={tableSortIcon} alt="tablesort icon"/></th>
+              <th onClick={() => handleSort('subject')}>Subject<img src={tableSortIcon} alt="tablesort icon"/></th>
+              <th onClick={() => handleSort('author')}>Author<img src={tableSortIcon} alt="tablesort icon"/></th>
+              <th onClick={() => handleSort('created')}>Date Created<img src={tableSortIcon} alt="tablesort icon"/></th>
+              <th>Priority</th>
+              <th onClick={() => handleSort('assignTo')}>Assign To<img src={tableSortIcon} alt="tablesort icon"/></th>
+              <th onClick={() => handleSort('dueDate')}>Due By<img src={tableSortIcon} alt="tablesort icon"/></th>
             </tr>
           </thead>
           <tbody>
@@ -92,22 +97,20 @@ function Tasklist() {
                   </tr>
                 ))
               :
-                <tr>
-                  <th scope="row" className="p-3 text-center"><Spinner /></th>
-                  <td><Spinner /></td>
-                  <td><Spinner /></td>
-                  <td><Spinner /></td>
-                  <td><Spinner /></td>
-                  <td><Spinner /></td>
-                  <td><Spinner /></td>
-                  <td><Spinner /></td>
-                </tr>
+                  <tr>
+                    <td><Spinner /></td>
+                  </tr>
               }
           </tbody>
         </table>
 
         <div className="d-flex justify-content-end">
           <p className="text-center m-2">Page {currentPage} of {totalPages}</p>
+          {/* <select className="p-2 mx-3" onChange={(e) => setPageSize(e.target.value)}>
+            <option value="5">5</option>
+            <option value="10" select>10</option>
+            <option value="20">20</option>
+          </select> */}
           <button 
             onClick={() => handlePageChange(currentPage > 1 ? currentPage - 1 : 1)} 
             disabled={currentPage === 1}>
