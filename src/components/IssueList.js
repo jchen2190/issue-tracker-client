@@ -6,7 +6,7 @@ import { formatTime } from './formatTime';
 import Spinner from './Spinner/Spinner';
 import tableSortIcon from '../images/table-sort.svg'
 
-function Tasklist() {
+function IssueList() {
   const [tasks, setTasks] = useState([]);
   const [sortField, setSortField] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
@@ -127,4 +127,4 @@ function Tasklist() {
   );
 }
 
-export default Tasklist;
+export default IssueList;

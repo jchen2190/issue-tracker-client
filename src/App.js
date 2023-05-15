@@ -3,7 +3,7 @@ import Profile from './components/Profile';
 import NavHeader from './components/NavHeader';
 import NavSidebar from './components/NavSidebar';
 import Home from './Home';
-import Tasklist from './components/Tasklist';
+import IssueList from './components/IssueList';
 import OneTask from './components/OneTask';
 import LogIn from './components/LogIn';
 import SignUp from './components/SignUp';
@@ -22,7 +22,7 @@ function App() {
             <div className="col-12 col-lg-10">
                 <Routes>
                     <Route path="/" element={ <Home /> } />
-                    <Route path="/tasklist" element={ <Tasklist /> } />
+                    <Route path="/tasklist" element={ <IssueList /> } />
                     <Route path="/tasklist/:id" element={ <OneTask /> } />
                     <Route path="/login" element={ <LogIn /> } />
                     <Route path="/signup" element = { <SignUp /> } />
