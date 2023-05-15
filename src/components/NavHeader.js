@@ -58,8 +58,8 @@ function NavHeader() {
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Link to="/" className="d-md-block d-lg-none">Home</Link>
-                            <Link to="/tasklist" className="d-md-block d-lg-none">Issues</Link>
+                            <Link to="/" className="d-md-block d-lg-none mx-3">Home</Link>
+                            <Link to="/tasklist" className="d-md-block d-lg-none mx-3">Issues</Link>
                         </Nav>
                         <Navbar.Text>
                             <div className="is-user">

@@ -88,7 +88,7 @@ function OneTask() {
             <h2>Issue Detail</h2>
             <form onSubmit={handleOnSubmit} className="oneTaskForm container rounded p-3 ">
                 <div className="mb-3 row">
-                    <label className="col-sm-2 col-form-label">Status</label>
+                    <label className="col-sm-2 col-form-label">Status:</label>
                     <div className="col-sm-3">
                         {
                             isEditing ?
@@ -101,7 +101,7 @@ function OneTask() {
                     </div>
                 </div>
                 <div className="mb-3 row">
-                    <label className="col-sm-2 col-form-label">Summary</label>
+                    <label className="col-sm-2 col-form-label">Summary:</label>
                     <div className="col-sm-10">
                     {
                         isEditing ?
@@ -111,7 +111,7 @@ function OneTask() {
                     </div>
                 </div>
                 <div className="mb-3 row">
-                    <label className="col-sm-2 col-form-label">Description</label>
+                    <label className="col-sm-2 col-form-label">Description:</label>
                     <div className="col-sm-10">
                     {
                         isEditing ?
@@ -121,7 +121,7 @@ function OneTask() {
                     </div>
                 </div>
                 <div className="mb-3 row">
-                    <label className="col-sm-2 col-form-label">Author</label>
+                    <label className="col-sm-2 col-form-label">Author:</label>
                     <div className="col-sm-10">
                         <label className="align-middle">{task.author}</label>
                     </div>
@@ -131,7 +131,7 @@ function OneTask() {
                     <div className="col-sm-10">{ formatTime(task.created) }</div>
                 </div>
                 <div className="mb-3 row">
-                    <label className="col-sm-2 col-form-label">Priority</label>
+                    <label className="col-sm-2 col-form-label">Priority:</label>
                     <div className="col-sm-3">
                     {
                         isEditing ?
@@ -145,7 +145,7 @@ function OneTask() {
                     </div>
                 </div>
                 <div className="mb-3 row">
-                    <label className="col-sm-2 col-form-label">Date Due</label>
+                    <label className="col-sm-2 col-form-label">Date Due:</label>
                     <div className="col-sm-3">
                     {/* {
                         isEditing ?
@@ -164,7 +164,7 @@ function OneTask() {
                     </div>
                 </div>
                 <div className="mb-3 row">
-                    <label className="col-sm-2 col-form-label">Assigned To</label>
+                    <label className="col-sm-2 col-form-label">Assigned To:</label>
                     <div className="col-sm-10">
                     {
                         isEditing ?

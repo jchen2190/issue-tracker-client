@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { API_URL } from './constants';
-import { useNavigate } from 'react-router-dom';
 
 function Profile() {
     const [username, setUsername] = useState("");
@@ -65,7 +65,7 @@ function Profile() {
                     </div>
                     <button onClick={onLogOut} className="btn btn-outline-primary"> Log Out </button>
                 </div>
-                : <h4 className="mt-5"><a href="/login">Log in</a> to see your profile</h4>
+                : <h4 className="mt-5"><Link to="/login">Log in</Link> to see your profile</h4>
             }
         </div>
     )
