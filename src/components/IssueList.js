@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { API_URL } from './constants';
-import AddTask from "./AddTask";
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+
+import { API_URL } from './constants';
 import { formatTime } from './formatTime';
+import AddTask from "./AddTask";
 import Spinner from './Spinner/Spinner';
 import tableSortIcon from '../images/table-sort.svg'
 
@@ -88,7 +90,7 @@ function IssueList() {
                   <tr key={task._id}>
                     <th scope="row" className="p-3 text-center">{task.taskNo}</th>
                     <td><span className={task.status}>{task.status}</span></td>
-                    <td><a href={`/tasklist/${task._id}`} className="text-decoration-none">{task.subject}</a></td>
+                    <td><Link to={`/tasklist/${task._id}`} className="text-decoration-none">{task.subject}</Link></td>
                     <td>{task.author}</td>
                     <td>{formatTime(task.created)}</td>
                     <td><span className={task.importance}>{task.importance}</span></td>

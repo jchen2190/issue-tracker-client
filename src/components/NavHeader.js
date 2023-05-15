@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { API_URL } from './constants';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Container from 'react-bootstrap/Container';
@@ -54,12 +54,12 @@ function NavHeader() {
         <div className="navheader">
             <Navbar>
                 <Container>
-                    <div className="brand"><a className="btn" href="/">IssueTracker</a></div>
+                    <div className="brand"><Link to="/">IssueTracker</Link></div>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link href="/" className="d-md-block d-lg-none">Home</Nav.Link>
-                            <Nav.Link href="/tasklist" className="d-md-block d-lg-none">Issues</Nav.Link>
+                            <Link to="/" className="d-md-block d-lg-none">Home</Link>
+                            <Link to="/tasklist" className="d-md-block d-lg-none">Issues</Link>
                         </Nav>
                         <Navbar.Text>
                             <div className="is-user">
