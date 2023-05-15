@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { API_URL } from './constants';
 
 function AddTask() {
-    // const [status, setStatus] = useState("open");
     const [subject, setSubject] = useState("");
     const [author, setAuthor] = useState("guest");
     const [description, setDescription] = useState("");
