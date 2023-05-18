@@ -1,49 +1,23 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useContext } from 'react';
+import AuthContext from "../AuthContext";
 import { API_URL } from './constants';
 
 function AddTask() {
     const [subject, setSubject] = useState("");
-    const [author, setAuthor] = useState("guest");
     const [description, setDescription] = useState("");
     const [assignTo, setAssignTo] = useState("");
     const [dueDate, setDueDate] = useState(new Date())
     const [importance, setImportance] = useState("low");
     const [isEditing, setIsEditing] = useState(false);
 
-    useEffect(() => {
-        async function fetchData() {
-            try {
-                const response = await fetch(`${API_URL}/user/userData`, {
-                    method: 'post',
-                    headers: {
-                        "Accept": "application/json",
-                        "Content-Type": "application/json",
-                        "Access-Control-Allow-Origin": "*",
-                        "Access-Control-Allow-Credentials": "true"
-                    },
-                    credentials: 'include' // enable cookies
-                });
-
-                const responseData = await response.json();
-                if (responseData.error) {
-                    console.log(responseData.message);
-                } else {
-                    setAuthor(responseData.payload.username)
-                }
-            } catch (error) {
-                console.error(error);
-            }
-        }
-        fetchData();
-    }, []);
+    const { user } = useContext(AuthContext);
     
     async function postTask() { 
-
         let newTask = {
             status: "open",
             created: Date.now(),
             subject: subject,
-            author: author,
+            author: user,
             assignTo: assignTo,
             description: description,
             importance: importance,
@@ -112,7 +86,7 @@ function AddTask() {
                                 required
                                 onChange={(e) => setAssignTo(e.target.value)} />
                         </div>
-                        <button type="button" className="btn btn-primary col-3" onClick={() => setAssignTo(author)}>Assign to myself</button>
+                        <button type="button" className="btn btn-primary col-3" onClick={() => setAssignTo(user)}>Assign to myself</button>
                     </div>
                     <div className="mb-3 row">
                         <label className="col-sm-2 col-form-label">Due Date:</label>

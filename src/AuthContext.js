@@ -5,7 +5,7 @@ const AuthContext = createContext();
 
 export function AuthProvider({children}) {
     const [authorize, setAuthorize] = useState(false);
-    const [user, setUser] = useState("");
+    const [user, setUser] = useState("guest");
     const [loginError, setLoginError] = useState(false);
     const [loginMessage, setLoginMessage] = useState("");
 
@@ -44,7 +44,7 @@ export function AuthProvider({children}) {
         }).then(async res => {
             if (res.ok) {
                 setAuthorize(false);
-                setUser("");
+                setUser("guest");
                 setLoginMessage("");
             } else {
                 throw new Error('Logout failed');
