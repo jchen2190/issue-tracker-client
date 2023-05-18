@@ -3,13 +3,13 @@ import AuthContext from "../AuthContext";
 import { Link } from 'react-router-dom';
 
 function Profile() {
-    const { authorize, username, onLogOut } = useContext(AuthContext);
+    const { authorize, user, onLogOut } = useContext(AuthContext);
 
     return (
         <div className="d-flex justify-content-center ">
             { authorize ? 
                 <div >
-                    <h1 >Welcome {username}</h1>
+                    <h1 >Welcome {user}</h1>
                     {/* <h2 >This is issues assigned to you:</h2> */}
                     <div>
                         {/* List of issues */}

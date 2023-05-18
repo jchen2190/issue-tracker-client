@@ -1,14 +1,16 @@
 import { createContext, useState, useEffect } from 'react';
 import { API_URL } from './components/constants';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
 export function AuthProvider({children}) {
     const [authorize, setAuthorize] = useState(false);
-    const [username, setUsername] = useState("");
+    const [user, setUser] = useState("");
+    const [loginError, setLoginError] = useState(false);
+    const [loginMessage, setLoginMessage] = useState("");
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchData() {
@@ -29,7 +31,7 @@ export function AuthProvider({children}) {
                 if (responseData.error) {
                     setAuthorize(false);
                 } else {
-                    setUsername(responseData.payload.username)
+                    setUser(responseData.payload.username)
                     setAuthorize(true);
                 }
             } catch (error) {
@@ -37,7 +39,7 @@ export function AuthProvider({children}) {
             }
         }
         fetchData();
-    }, [username, authorize]);
+    }, [user, authorize]);
 
     const onLogOut = (e) => {
         fetch(`${API_URL}/user/logOutUser`, {
@@ -46,18 +48,49 @@ export function AuthProvider({children}) {
         }).then(async res => {
             if (res.ok) {
                 setAuthorize(false);
-                setUsername("");
+                setUser("");
+                setLoginMessage("");
             } else {
                 throw new Error('Logout failed');
             }
         }).catch(error => {
             console.error(error);
         })
-        navigate(0);
+    }
+
+    async function logInUser(username, password) {
+        let logInUser = {
+            username: username,
+            password: password,
+        }
+        fetch(`${API_URL}/user/logInUser`, {
+            method: "post",
+            body: JSON.stringify(logInUser),
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Credentials": 'true'
+            },
+            credentials: 'include' // enable cookies
+        }).then(async res => res.json())
+            .then(data => {
+                if (data.error) {
+                    setLoginError(true);
+                    setLoginMessage(data.error); // User not found
+                    console.log(data);
+                } else {
+                    setLoginError(false);
+                    // setSuccess(true);
+                    setLoginMessage(data.message); // User logged in successfully
+                    setAuthorize(true);
+                }
+            })
+            .catch(error => console.error(error));
     }
 
     return (
-        <AuthContext.Provider value={{ authorize, username, onLogOut }}>
+        <AuthContext.Provider value={{ authorize, user, onLogOut, logInUser, loginMessage, loginError }}>
             {children}
         </AuthContext.Provider>
     )

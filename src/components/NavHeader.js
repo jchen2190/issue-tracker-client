@@ -7,7 +7,7 @@ import Container from 'react-bootstrap/Container';
 import githubLogo from '../images/github.svg';
 
 function NavHeader() {
-    const { authorize, username } = useContext(AuthContext);
+    const { authorize, user } = useContext(AuthContext);
     const navigate = useNavigate();
 
     function GoToProfile(e) {
@@ -36,7 +36,7 @@ function NavHeader() {
                             <div className="is-user">
                                 {
                                     authorize ?
-                                    <button className="btn" onClick={GoToProfile}>Welcome {username}</button>
+                                    <button className="btn" onClick={GoToProfile}>Welcome {user}</button>
                                     :
                                     <button className="btn" onClick={SignIn}>Sign In</button>
                                 }

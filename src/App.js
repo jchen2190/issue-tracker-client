@@ -23,7 +23,7 @@ function App() {
                 </div>
                 <div className="col-12 col-lg-10">
                     <Routes>
-                        <Route path="/" element={ <Home /> } />
+                        <Route path="/" element={ <Home /> }></Route>
                         <Route path="/tasklist" element={ <IssueList /> } />
                         <Route path="/tasklist/:id" element={ <OneTask /> } />
                         <Route path="/login" element={ <LogIn /> } />

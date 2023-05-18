@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { API_URL } from './constants';
+// import { API_URL } from './constants';
 import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
@@ -8,49 +8,46 @@ import AuthContext from "../AuthContext";
 function LogIn() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [message, setMessage] = useState("");
-    const [success, setSuccess] = useState(false);
-    const [error, setError] = useState(false);
 
-    const { authorize } = useContext(AuthContext);
+    const { authorize, logInUser, loginMessage, loginError } = useContext(AuthContext);
     const navigate = useNavigate();
 
-    async function logInUser() {
-        let logInUser = {
-            username: username,
-            password: password,
-        }
-        fetch(`${API_URL}/user/logInUser`, {
-            method: "post",
-            body: JSON.stringify(logInUser),
-            headers: {
-                "Accept": "application/json",
-                "Content-Type": "application/json",
-                "Access-Control-Allow-Origin": "*",
-                "Access-Control-Allow-Credentials": 'true'
-            },
-            credentials: 'include' // enable cookies
-        }).then(async res => res.json())
-            .then(data => {
-                if (data.error) {
-                    setError(true);
-                    setMessage(data.error); // User not found
-                    console.log(data);
-                } else {
-                    setError(false);
-                    setSuccess(true);
-                    setMessage(data.message); // User logged in successfully
-                    setTimeout(() => {
-                        navigate(0);
-                    }, 1500)
-                }
-            })
-            .catch(error => console.error(error));
-    }
+    // async function logInUser() {
+    //     let logInUser = {
+    //         username: username,
+    //         password: password,
+    //     }
+    //     fetch(`${API_URL}/user/logInUser`, {
+    //         method: "post",
+    //         body: JSON.stringify(logInUser),
+    //         headers: {
+    //             "Accept": "application/json",
+    //             "Content-Type": "application/json",
+    //             "Access-Control-Allow-Origin": "*",
+    //             "Access-Control-Allow-Credentials": 'true'
+    //         },
+    //         credentials: 'include' // enable cookies
+    //     }).then(async res => res.json())
+    //         .then(data => {
+    //             if (data.error) {
+    //                 setError(true);
+    //                 setMessage(data.error); // User not found
+    //                 console.log(data);
+    //             } else {
+    //                 setError(false);
+    //                 setSuccess(true);
+    //                 setMessage(data.message); // User logged in successfully
+    //                 // setTimeout(() => {
+    //                 //     navigate(0);
+    //                 // }, 1500)
+    //             }
+    //         })
+    //         .catch(error => console.error(error));
+    // }
 
     async function handleSubmit(e) {
         e.preventDefault();
-        logInUser();
+        logInUser(username, password);
     }
 
     function handleClick(e) {
@@ -78,18 +75,13 @@ function LogIn() {
                         <label className="form-label" htmlFor="password">Password</label>
                         <input value={password} type="password" name="password" className="form-control" onChange={(e)=>setPassword(e.target.value)}/>
                     </div>
+                    <button type="submit" className="btn btn-primary btn-lg w-100 mb-4">Log In</button>
+                    <div className="d-flex justify-content-center align-items-center">
+                        <p className="m-0 p-2">Don't have an account?</p>
+                        <button className="btn btn-outline-primary" onClick={handleClick}>Register</button>
+                    </div>
                     {
-                        success ? message :
-                        <>
-                            <button type="submit" className="btn btn-primary btn-lg w-100 mb-4">Log In</button>
-                            <div className="d-flex justify-content-center align-items-center">
-                                <p className="m-0 p-2">Don't have an account?</p>
-                                <button className="btn btn-outline-primary" onClick={handleClick}>Register</button>
-                            </div>
-                        </>
-                    }
-                    {
-                        error ? message : <></>
+                        loginError ? <p>{loginMessage}</p> : <></>
                     }
                 </form>
             }
