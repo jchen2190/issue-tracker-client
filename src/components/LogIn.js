@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-// import { API_URL } from './constants';
-import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import AuthContext from "../AuthContext";
 
@@ -11,39 +9,6 @@ function LogIn() {
 
     const { authorize, logInUser, loginMessage, loginError } = useContext(AuthContext);
     const navigate = useNavigate();
-
-    // async function logInUser() {
-    //     let logInUser = {
-    //         username: username,
-    //         password: password,
-    //     }
-    //     fetch(`${API_URL}/user/logInUser`, {
-    //         method: "post",
-    //         body: JSON.stringify(logInUser),
-    //         headers: {
-    //             "Accept": "application/json",
-    //             "Content-Type": "application/json",
-    //             "Access-Control-Allow-Origin": "*",
-    //             "Access-Control-Allow-Credentials": 'true'
-    //         },
-    //         credentials: 'include' // enable cookies
-    //     }).then(async res => res.json())
-    //         .then(data => {
-    //             if (data.error) {
-    //                 setError(true);
-    //                 setMessage(data.error); // User not found
-    //                 console.log(data);
-    //             } else {
-    //                 setError(false);
-    //                 setSuccess(true);
-    //                 setMessage(data.message); // User logged in successfully
-    //                 // setTimeout(() => {
-    //                 //     navigate(0);
-    //                 // }, 1500)
-    //             }
-    //         })
-    //         .catch(error => console.error(error));
-    // }
 
     async function handleSubmit(e) {
         e.preventDefault();

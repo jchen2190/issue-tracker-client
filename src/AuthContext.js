@@ -1,6 +1,5 @@
 import { createContext, useState, useEffect } from 'react';
 import { API_URL } from './components/constants';
-// import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext();
 
@@ -9,8 +8,6 @@ export function AuthProvider({children}) {
     const [user, setUser] = useState("");
     const [loginError, setLoginError] = useState(false);
     const [loginMessage, setLoginMessage] = useState("");
-
-    // const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchData() {
@@ -27,7 +24,6 @@ export function AuthProvider({children}) {
                 });
 
                 const responseData = await response.json();
-
                 if (responseData.error) {
                     setAuthorize(false);
                 } else {
@@ -39,7 +35,7 @@ export function AuthProvider({children}) {
             }
         }
         fetchData();
-    }, [user, authorize]);
+    }, []);
 
     const onLogOut = (e) => {
         fetch(`${API_URL}/user/logOutUser`, {
@@ -81,9 +77,9 @@ export function AuthProvider({children}) {
                     console.log(data);
                 } else {
                     setLoginError(false);
-                    // setSuccess(true);
                     setLoginMessage(data.message); // User logged in successfully
                     setAuthorize(true);
+                    setUser(data.payload.username);
                 }
             })
             .catch(error => console.error(error));
