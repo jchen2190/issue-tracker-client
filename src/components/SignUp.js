@@ -29,7 +29,7 @@ function SignUp () {
                     setError(data.error); // "Username Taken"
                 } else {
                     setSuccess(data.message); // "User created successfully"
-                    // navigate("/login");
+                    navigate("/login");
                 }
             })
             .catch(error => console.error(error));

@@ -1,7 +1,7 @@
 # Issue Tracker
 
 ## General Info
-This project is a MERN (MongoDB, Express, React, Node) application with CRUD (Create, Read, Update, Delete) functions and lets users keep track of variety of issues with different priorities. It takes data saved in the server from MongoDB database and lets users login, add, edit issues.
+This project is a MERN (MongoDB, Express, React, Node) application with CRUD (Create, Read, Update, Delete) functions and lets users keep track of variety of issues with different priorities. It takes data saved in the server from MongoDB database and lets users login, add, edit, and delete issues.
 
 ## Setup
 
@@ -25,6 +25,7 @@ npm install
 Dependencies that will be installed for the client-side:
 
 - axios
+- bootstrap
 - react-bootstrap
 - react-router-dom
 
@@ -32,3 +33,6 @@ Run the project when is the server is connected:
 ```
 npm start
 ```
+
+## Deployment
+See the project live at [https://issue-tracker-client-dja8.onrender.com/](https://issue-tracker-client-dja8.onrender.com/). Please wait for a while until the server data starts up and loads.
