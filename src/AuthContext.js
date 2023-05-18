@@ -37,7 +37,7 @@ export function AuthProvider({children}) {
             }
         }
         fetchData();
-    }, [authorize]);
+    }, [username, authorize]);
 
     const onLogOut = (e) => {
         fetch(`${API_URL}/user/logOutUser`, {

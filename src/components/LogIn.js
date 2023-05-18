@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { API_URL } from './constants';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import AuthContext from "../AuthContext";
 
 function LogIn() {
     const [username, setUsername] = useState("");
@@ -8,7 +11,8 @@ function LogIn() {
     const [message, setMessage] = useState("");
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
-    
+
+    const { authorize } = useContext(AuthContext);
     const navigate = useNavigate();
 
     async function logInUser() {
@@ -30,14 +34,15 @@ function LogIn() {
             .then(data => {
                 if (data.error) {
                     setError(true);
-                    setMessage(data.error);
+                    setMessage(data.error); // User not found
+                    console.log(data);
                 } else {
                     setError(false);
                     setSuccess(true);
                     setMessage(data.message); // User logged in successfully
                     setTimeout(() => {
-                        navigate("/profile");
-                    }, 1000)
+                        navigate(0);
+                    }, 1500)
                 }
             })
             .catch(error => console.error(error));
@@ -55,32 +60,40 @@ function LogIn() {
 
     return (
         <div className="d-flex container justify-content-center align-items-center mt-5">
-            <form onSubmit={handleSubmit}>
-                <h3 className="d-flex justify-content-center">IssueTracker</h3>
-                <p className="d-flex justify-content-center">Please login to your account</p>
-                <div className="form-outline mb-4">
-                    <label className="form-label" htmlFor="username">Username</label>
-                    <input value={username} type="text" name="username" className="form-control" onChange={(e)=>setUsername(e.target.value)}/>
+            {
+                authorize ?
+                <div>
+                    <h3 className="d-flex justify-content-center">You are logged in!</h3>
+                    <p>Go to your <Link to="/profile">profile</Link> or go back <Link to="/">home</Link></p>
                 </div>
-                <div className="form-outline mb-4">
-                    <label className="form-label" htmlFor="password">Password</label>
-                    <input value={password} type="password" name="password" className="form-control" onChange={(e)=>setPassword(e.target.value)}/>
-                </div>
-                {
-                    success ? message :
-                    <>
-                        <button type="submit" className="btn btn-primary btn-lg w-100 mb-4">Log In</button>
-                        <div className="d-flex justify-content-center align-items-center">
-                            <p className="m-0 p-2">Don't have an account?</p>
-                            <button className="btn btn-outline-primary" onClick={handleClick}>Register</button>
-                        </div>
-                    </>
-                }
-                {
-                    error ? message : <></>
-                }
+                :
+                <form onSubmit={handleSubmit}>
+                    <h3 className="d-flex justify-content-center">IssueTracker</h3>
+                    <p className="d-flex justify-content-center">Please login to your account</p>
+                    <div className="form-outline mb-4">
+                        <label className="form-label" htmlFor="username">Username</label>
+                        <input value={username} type="text" name="username" className="form-control" onChange={(e)=>setUsername(e.target.value)}/>
+                    </div>
+                    <div className="form-outline mb-4">
+                        <label className="form-label" htmlFor="password">Password</label>
+                        <input value={password} type="password" name="password" className="form-control" onChange={(e)=>setPassword(e.target.value)}/>
+                    </div>
+                    {
+                        success ? message :
+                        <>
+                            <button type="submit" className="btn btn-primary btn-lg w-100 mb-4">Log In</button>
+                            <div className="d-flex justify-content-center align-items-center">
+                                <p className="m-0 p-2">Don't have an account?</p>
+                                <button className="btn btn-outline-primary" onClick={handleClick}>Register</button>
+                            </div>
+                        </>
+                    }
+                    {
+                        error ? message : <></>
+                    }
+                </form>
+            }
                 
-            </form>
         </div>
     );
 }
