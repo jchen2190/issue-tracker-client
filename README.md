@@ -1,7 +1,9 @@
 # Issue Tracker
 
 ## General Info
-This project is a MERN (MongoDB, Express, React, Node) application with CRUD (Create, Read, Update, Delete) functions and lets users keep track of variety of issues with different priorities. It takes data saved in the server from MongoDB database and lets users login, add, edit, and delete issues.
+This project is a MERN (MongoDB, Express, React, Node) application with CRUD (Create, Read, Update, Delete) functionality and lets users keep track of variety of issues with different priorities. It takes data saved in the server from MongoDB database and lets users login, add, edit, and delete issues.
+
+Note: This repository only contains code for the client side of the project. To see the server side of the project, go to [github.com/jchen2190/issue-tracker-server](https://github.com/jchen2190/issue-tracker-server) for installation and setup.
 
 ## Setup
 
@@ -9,8 +11,6 @@ This project is a MERN (MongoDB, Express, React, Node) application with CRUD (Cr
 Go to Official Node.js Website and download the installer per your operating system.
 
 ### Connect to MongoDB
-Note: This repository only contains code for the client side of the project.
-
 Create an `.env` file (outside your `src` folder) with similar text below, where your `<port number>` matches your server `<port number>`:
 ```
 REACT_APP_API_URL=http://localhost:<port number>/api
@@ -35,4 +35,6 @@ npm start
 ```
 
 ## Deployment
-See the project live at [https://issue-tracker-client-dja8.onrender.com/](https://issue-tracker-client-dja8.onrender.com/). Please wait for a while until the server data starts up and loads.
+See the project live at [https://issue-tracker-client-dja8.onrender.com/](https://issue-tracker-client-dja8.onrender.com/).
+
+Please wait for a while until the server data finishes loading.
