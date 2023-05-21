@@ -73,7 +73,7 @@ export function AuthProvider({children}) {
             .then(data => {
                 if (data.error) {
                     setLoginError(true);
-                    setLoginMessage(data.error); // User not found
+                    setLoginMessage(data.error); // "User not found" or "Invalid Password"
                     console.log(data);
                 } else {
                     setLoginError(false);

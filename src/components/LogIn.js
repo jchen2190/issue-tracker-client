@@ -17,6 +17,8 @@ function LogIn() {
 
     function handleClick(e) {
         e.preventDefault();
+        setUsername("");
+        setPassword("");
         navigate("/signup");
     }
 

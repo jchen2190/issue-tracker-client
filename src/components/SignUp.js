@@ -10,7 +10,16 @@ function SignUp () {
 
     const navigate = useNavigate();
 
-    async function createUser() {       
+    async function createUser() {
+        if (username.length < 4) {
+            setError("Username is too short. 4 characters minimum");
+            return;
+        }
+        if (password.length < 8) {
+            setError("Password is too short. 8 characters minimum");
+            return;
+        }
+        
         let newUser = {
             username: username,
             password: password,
@@ -41,6 +50,8 @@ function SignUp () {
     }
 
     function handleClick() {
+        setSuccess("");
+        setError("");
         navigate("/login")
     }
 
@@ -50,11 +61,11 @@ function SignUp () {
                 <h3 className="d-flex justify-content-center">IssueTracker</h3>
                 <p className="d-flex justify-content-center">Register</p>
                 <div className="form-outline mb-4">
-                    <label className="form-label" htmlFor="username">Username</label>
+                    <label className="form-label" htmlFor="username">Username (4 characters minimum)</label>
                     <input value={username} type="text" name="username" className="form-control" placeholder="Username" onChange={(e) => setUsername(e.target.value)}/>
                 </div>
                 <div className="form-outline mb-4">
-                    <label className="form-label" htmlFor="password">Password</label>
+                    <label className="form-label" htmlFor="password">Password (8 characters minimum)</label>
                     <input value={password} type="password" name="password" className="form-control" placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
                 </div>
                 <button type="submit" className="btn btn-primary btn-lg w-100 mb-4">Register</button>

@@ -8,7 +8,7 @@ Note: This repository only contains code for the client side of the project. To 
 ## Setup
 
 ### Node Installation
-Go to Official Node.js Website and download the installer per your operating system.
+Go to [Official Node.js Website](https://nodejs.org) and download the installer per your operating system.
 
 ### Connect to MongoDB
 Create an `.env` file (outside your `src` folder) with similar text below, where your `<port number>` matches your server `<port number>`:
