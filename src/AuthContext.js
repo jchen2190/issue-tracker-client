@@ -6,6 +6,7 @@ const AuthContext = createContext();
 export function AuthProvider({children}) {
     const [authorize, setAuthorize] = useState(false);
     const [user, setUser] = useState("guest");
+    const [watchlist, setWatchlist] = useState([]);
     const [loginError, setLoginError] = useState(false);
     const [loginMessage, setLoginMessage] = useState("");
 
@@ -28,6 +29,7 @@ export function AuthProvider({children}) {
                     setAuthorize(false);
                 } else {
                     setUser(responseData.payload.username)
+                    setWatchlist(responseData.payload.watchlist)
                     setAuthorize(true);
                 }
             } catch (error) {
@@ -86,7 +88,7 @@ export function AuthProvider({children}) {
     }
 
     return (
-        <AuthContext.Provider value={{ authorize, user, onLogOut, logInUser, loginMessage, loginError }}>
+        <AuthContext.Provider value={{ authorize, user, watchlist, onLogOut, logInUser, loginMessage, loginError }}>
             {children}
         </AuthContext.Provider>
     )
