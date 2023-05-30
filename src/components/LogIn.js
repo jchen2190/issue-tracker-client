@@ -31,7 +31,7 @@ function LogIn() {
                     <p>Go to your <Link to="/profile">profile</Link> or go back <Link to="/">home</Link></p>
                 </div>
                 :
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} autocomplete="off">
                     <h3 className="d-flex justify-content-center">IssueTracker</h3>
                     <p className="d-flex justify-content-center">Please login to your account</p>
                     <div className="form-outline mb-4">

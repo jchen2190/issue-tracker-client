@@ -1,5 +1,8 @@
 # Issue Tracker
 
+![screenshot](./public/issuetracker.png)
+![screenshot](./public/issuetracker2.png)
+
 ## General Info
 This project is a MERN (MongoDB, Express, React, Node) application with CRUD (Create, Read, Update, Delete) functionality and lets users keep track of variety of issues with different priorities. It takes data saved in the server from MongoDB database and lets users login, add, edit, and delete issues.
 
